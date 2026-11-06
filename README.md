@@ -12,7 +12,7 @@
   - Active favicon located at `/public/favicon.svg` and embedded in `/index.html`.
 - **Start Challenge Screen**:
   - Clean project overview matching challenge specifications: tags for **HTML**, **CSS**, **JavaScript**, **Frameworks**, and **Intermediate** difficulty.
-  - Community progress stepper: `Start Working` -> `Submit Solution` -> `5 upvotes` -> `10 upvotes`.
+  - Interactive quiz flow stepper: `1. Quiz Overview & Setup` -> `2. Questions` -> `3. Scores` -> `4. Results`.
   - Configurable topic categories, difficulty levels, question pool count, and timer toggles.
 - **Card-Based Multiple Choice Questions**:
   - Multiple-choice questions presented on elevated glassmorphic cards.

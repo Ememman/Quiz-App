@@ -7,9 +7,10 @@ import {
   Sparkles,
   Medal,
   Layers,
-  Flag,
   ChevronRight,
   Thunderbolt,
+  Sliders,
+  Cup,
 } from "@gravity-ui/icons";
 import { CATEGORIES, DIFFICULTIES } from "../data/quizQuestions";
 
@@ -68,48 +69,52 @@ export const StartScreen = ({
         </div>
       </div>
 
-      {/* Community Progress Banner */}
+      {/* Quiz Progress & Workflow Banner */}
       <div className="community-banner rounded-xl sm:rounded-2xl border border-white/10 bg-[#0f1016]/90 p-4 sm:p-6 flex flex-col gap-3 sm:gap-4 shadow-lg">
         <p className="community-text text-xs sm:text-sm text-slate-300">
-          Start building, submit solution and get feedback from the community.
+          Configure challenge settings, solve interactive questions, earn streak scores, and review detailed results.
         </p>
 
         {/* Stepper with mobile horizontal scrolling and snap */}
         <div className="stepper-track flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none snap-x snap-mandatory">
+          {/* Step 1: Quiz Overview / Setup */}
           <div className="step-item step-active flex items-center gap-1.5 shrink-0 snap-start">
-            <div className="step-badge step-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-purple-600 via-purple-700 to-orange-600 text-white shadow-md shadow-purple-900/30">
-              <Play width={13} height={13} />
-              <span>Start Working</span>
+            <div className="step-badge step-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-orange-500 via-orange-600 to-amber-600 text-white shadow-md shadow-orange-500/30">
+              <Sliders width={13} height={13} />
+              <span>1. Quiz Overview & Setup</span>
             </div>
           </div>
           <div className="step-line hidden sm:block h-[2px] min-w-4 flex-1 bg-white/10" />
 
+          {/* Step 2: Questions */}
           <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-number w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-[11px] font-bold text-slate-400">
               2
             </div>
             <span className="step-label text-xs sm:text-sm font-medium text-slate-400">
-              Submit Solution
+              Questions
             </span>
           </div>
           <div className="step-line hidden sm:block h-[2px] min-w-4 flex-1 bg-white/10" />
 
+          {/* Step 3: Scores */}
           <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-flag w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-slate-400">
-              <Flag width={12} height={12} />
+              <Cup width={12} height={12} />
             </div>
             <span className="step-label text-xs sm:text-sm font-medium text-slate-400">
-              5 upvotes
+              Scores
             </span>
           </div>
           <div className="step-line hidden sm:block h-[2px] min-w-4 flex-1 bg-white/10" />
 
+          {/* Step 4: Results */}
           <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-flag w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-slate-400">
-              <Flag width={12} height={12} />
+              <CircleCheck width={12} height={12} />
             </div>
             <span className="step-label text-xs sm:text-sm font-medium text-slate-400">
-              10 upvotes
+              Results
             </span>
           </div>
         </div>
