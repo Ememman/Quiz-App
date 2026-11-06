@@ -1,6 +1,6 @@
 import React from "react";
 import { QuizLogo } from "./QuizLogo";
-import { Volume2, VolumeX, Trophy, Flame, Clock } from "lucide-react";
+import { Volume, VolumeSlash, Cup, Flame, Clock } from "@gravity-ui/icons";
 
 export const Navbar = ({
   score = 0,
@@ -40,14 +40,14 @@ export const Navbar = ({
             <>
               {/* Live Streak indicator */}
               <div
-                className={`hud-badge streak-badge flex items-center gap-1 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+                className={`hud-badge streak-badge flex items-center gap-1.5 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold transition-all ${
                   streak > 1
                     ? "bg-orange-500/15 border-orange-500/40 text-white shadow-sm shadow-orange-500/20"
                     : "bg-[#14151e] border-white/10 text-slate-300"
                 } border`}
                 title="Current streak"
               >
-                <Flame className="hud-icon flame-icon text-orange-500 shrink-0" size={14} />
+                <Flame className="hud-icon flame-icon text-orange-500 shrink-0" width={14} height={14} />
                 <span className="hud-label hidden xs:inline text-slate-400">Streak:</span>
                 <span className="hud-value font-bold text-orange-400">{streak}</span>
               </div>
@@ -64,10 +64,10 @@ export const Navbar = ({
               {/* Timer indicator */}
               {timerEnabled && (
                 <div
-                  className="hud-badge timer-badge hidden md:flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#14151e] border border-white/10 text-slate-300"
+                  className="hud-badge timer-badge hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#14151e] border border-white/10 text-slate-300"
                   title="60s timer per question is active"
                 >
-                  <Clock className="hud-icon text-orange-500" size={13} />
+                  <Clock className="hud-icon text-orange-500" width={13} height={13} />
                   <span className="hud-label">60s Timer</span>
                 </div>
               )}
@@ -83,9 +83,9 @@ export const Navbar = ({
             title={isMuted ? "Unmute sound effects" : "Mute sound effects"}
           >
             {isMuted ? (
-              <VolumeX size={17} className="text-slate-500" />
+              <VolumeSlash width={17} height={17} className="text-slate-500" />
             ) : (
-              <Volume2 size={17} className="text-orange-500" />
+              <Volume width={17} height={17} className="text-orange-500" />
             )}
           </button>
 
@@ -97,7 +97,7 @@ export const Navbar = ({
             aria-label="View lifetime quiz statistics"
             title="View Statistics & High Scores"
           >
-            <Trophy size={17} />
+            <Cup width={17} height={17} />
           </button>
         </div>
       </div>

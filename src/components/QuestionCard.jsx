@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
   Clock,
-  CheckCircle,
-  XCircle,
-  AlertTriangle,
-  Lightbulb,
+  CircleCheck,
+  CircleXmark,
+  TriangleExclamation,
+  Bulb,
   ArrowRight,
-  Code2,
+  Code,
   Copy,
   Check,
-} from "lucide-react";
+} from "@gravity-ui/icons";
 
 export const QuestionCard = ({
   question,
@@ -89,7 +89,7 @@ export const QuestionCard = ({
             }`}
             title="Time remaining for this question"
           >
-            <Clock size={14} className={timeRemaining <= 10 && !hasAnswered ? "text-red-400" : "text-orange-500"} />
+            <Clock width={14} height={14} className={timeRemaining <= 10 && !hasAnswered ? "text-red-400" : "text-orange-500"} />
             <span className="timer-digits font-mono font-bold">
               {timeRemaining < 10 ? `0${timeRemaining}` : timeRemaining}s
             </span>
@@ -120,7 +120,7 @@ export const QuestionCard = ({
         {/* Timeout Banner if time ran out */}
         {isTimedOut && !hasAnswered && (
           <div className="timeout-alert-banner bg-amber-500/15 border border-amber-500/40 text-amber-300 p-3 rounded-xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold animate-shake">
-            <AlertTriangle size={17} className="shrink-0" />
+            <TriangleExclamation width={17} height={17} className="shrink-0" />
             <span>Time expired! Score decremented by 1 point.</span>
           </div>
         )}
@@ -139,7 +139,8 @@ export const QuestionCard = ({
                 <span className="code-dot yellow w-2 h-2 rounded-full bg-amber-500" />
                 <span className="code-dot green w-2 h-2 rounded-full bg-emerald-500" />
                 <span className="code-lang ml-1.5 text-[11px] text-slate-400 flex items-center gap-1 font-mono">
-                  <Code2 size={12} /> Code Snippet
+                  <Code width={12} height={12} />
+                  <span>Code Snippet</span>
                 </span>
               </div>
               <button
@@ -148,7 +149,7 @@ export const QuestionCard = ({
                 onClick={handleCopyCode}
                 title="Copy code"
               >
-                {copied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
+                {copied ? <Check width={12} height={12} className="text-emerald-400" /> : <Copy width={12} height={12} />}
                 <span>{copied ? "Copied" : "Copy"}</span>
               </button>
             </div>
@@ -207,13 +208,13 @@ export const QuestionCard = ({
                 {showFeedback && (
                   <div className="feedback-status-badge shrink-0">
                     {isCorrect ? (
-                      <span className="status-label status-correct inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
-                        <CheckCircle size={13} />
-                        <span className="hidden xs:inline">{isSelected ? "Correct!" : "Correct Answer"}</span>
+                      <span className="status-label status-correct inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                        <CircleCheck width={13} height={13} />
+                        <span className="hidden xs:inline">{isSelected ? "Correct" : "Correct Answer"}</span>
                       </span>
                     ) : isSelected ? (
-                      <span className="status-label status-incorrect inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/40">
-                        <XCircle size={13} />
+                      <span className="status-label status-incorrect inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/40">
+                        <CircleXmark width={13} height={13} />
                         <span className="hidden xs:inline">Incorrect</span>
                       </span>
                     ) : null}
@@ -228,7 +229,7 @@ export const QuestionCard = ({
         {(hasAnswered || isTimedOut) && (
           <div className="explanation-drawer rounded-xl border border-orange-500/30 bg-gradient-to-br from-[#1e1812]/70 to-[#14161f]/80 p-3.5 sm:p-5 flex flex-col gap-1.5 animate-fade-in shadow-lg">
             <div className="explanation-header flex items-center gap-2 text-xs sm:text-sm font-bold text-orange-400">
-              <Lightbulb size={16} className="text-orange-500 shrink-0" />
+              <Bulb width={16} height={16} className="text-orange-500 shrink-0" />
               <span>Explanation & Key Concept</span>
             </div>
             <p className="explanation-text text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -251,7 +252,7 @@ export const QuestionCard = ({
               autoFocus
             >
               <span>{isLastQuestion ? "View Final Results" : "Next Question"}</span>
-              <ArrowRight size={17} />
+              <ArrowRight width={17} height={17} />
             </button>
           </div>
         )}

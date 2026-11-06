@@ -1,5 +1,5 @@
 import React from "react";
-import { Trophy, Flame, CheckCircle2, Award, X, Trash2 } from "lucide-react";
+import { Cup, Flame, CircleCheck, Medal, Xmark, TrashBin } from "@gravity-ui/icons";
 
 export const StatsModal = ({ isOpen, onClose, stats, onResetStats }) => {
   if (!isOpen) return null;
@@ -20,16 +20,16 @@ export const StatsModal = ({ isOpen, onClose, stats, onResetStats }) => {
       >
         <div className="modal-header px-4 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 flex items-center justify-between">
           <div className="modal-title-row flex items-center gap-2">
-            <Trophy className="text-amber-400 shrink-0" size={20} />
+            <Cup className="text-amber-400 shrink-0" width={20} height={20} />
             <h2 className="modal-title font-extrabold text-sm sm:text-base text-white">Lifetime Statistics</h2>
           </div>
           <button
             type="button"
-            className="modal-close-btn p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="modal-close-btn p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer touch-manipulation"
             onClick={onClose}
             aria-label="Close modal"
           >
-            <X size={18} />
+            <Xmark width={18} height={18} />
           </button>
         </div>
 
@@ -52,20 +52,20 @@ export const StatsModal = ({ isOpen, onClose, stats, onResetStats }) => {
 
             <div className="stat-box rounded-xl bg-[#14151e] border border-white/10 p-3 sm:p-4 flex flex-col gap-1">
               <span className="stat-label text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Best Streak</span>
-              <span className="stat-val text-xl sm:text-2xl font-black text-amber-400 flex items-center gap-1">
-                <Flame size={18} className="text-orange-500" />
-                {stats.bestStreak}
+              <span className="stat-val text-xl sm:text-2xl font-black text-amber-400 flex items-center gap-1.5">
+                <Flame width={18} height={18} className="text-orange-500" />
+                <span>{stats.bestStreak}</span>
               </span>
             </div>
           </div>
 
           <div className="stats-breakdown-row rounded-xl bg-[#14151e] border border-white/10 p-3 sm:p-4 flex flex-col sm:flex-row justify-between gap-2 text-xs sm:text-sm text-slate-300">
             <div className="breakdown-item flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+              <CircleCheck width={16} height={16} className="text-emerald-400 shrink-0" />
               <span>{stats.totalCorrect} Correct answers</span>
             </div>
             <div className="breakdown-item flex items-center gap-2">
-              <Award size={16} className="text-orange-400 shrink-0" />
+              <Medal width={16} height={16} className="text-orange-400 shrink-0" />
               <span>{stats.totalScore} Total points</span>
             </div>
           </div>
@@ -81,7 +81,7 @@ export const StatsModal = ({ isOpen, onClose, stats, onResetStats }) => {
               }
             }}
           >
-            <Trash2 size={13} />
+            <TrashBin width={13} height={13} />
             <span>Reset History</span>
           </button>
 

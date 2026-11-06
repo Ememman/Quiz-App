@@ -2,18 +2,22 @@ import React, { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import { QuizLogo } from "./QuizLogo";
 import {
-  RotateCcw,
+  ArrowRotateLeft,
   Sliders,
-  Share2,
-  CheckCircle2,
-  XCircle,
-  AlertTriangle,
+  ArrowRightFromSquare,
+  CircleCheck,
+  CircleXmark,
+  TriangleExclamation,
   Flame,
-  Award,
+  Clock,
   ChevronDown,
   ChevronUp,
   Check,
-} from "lucide-react";
+  CrownDiamond,
+  Thunderbolt,
+  Rocket,
+  GraduationCap,
+} from "@gravity-ui/icons";
 import sounds from "../utils/soundEffects";
 
 export const ResultsScreen = ({
@@ -34,15 +38,17 @@ export const ResultsScreen = ({
   const timedOutCount = results.filter((r) => r.isTimedOut).length;
   const accuracy = Math.round((correctCount / totalQuestions) * 100);
 
-  // Performance Rank
-  let rank = { title: "Code Apprentice", color: "#F97316", badge: "🌱" };
+  // Performance Rank using Gravity UI Icons (NO EMOJIS)
+  let rank = { title: "Code Apprentice", icon: GraduationCap };
   if (accuracy >= 90) {
-    rank = { title: "Web Mastermind", color: "#FF7A00", badge: "👑" };
+    rank = { title: "Web Mastermind", icon: CrownDiamond };
   } else if (accuracy >= 75) {
-    rank = { title: "Senior Architect", color: "#FB923C", badge: "⚡" };
+    rank = { title: "Senior Architect", icon: Thunderbolt };
   } else if (accuracy >= 50) {
-    rank = { title: "Proficient Developer", color: "#FBBF24", badge: "🚀" };
+    rank = { title: "Proficient Developer", icon: Rocket };
   }
+
+  const RankIcon = rank.icon;
 
   // Trigger confetti on mount if score is good (> 50%)
   useEffect(() => {
@@ -77,7 +83,7 @@ export const ResultsScreen = ({
   }, [accuracy]);
 
   const handleShare = () => {
-    const text = `🏆 Quiz App Score: ${score} pts (${accuracy}% Accuracy)\n✅ Correct: ${correctCount}/${totalQuestions}\n🔥 Best Streak: ${bestStreak}\nRank: ${rank.badge} ${rank.title}\nTested on Dark & Orange Quiz App!`;
+    const text = `Quiz App Results: ${score} PTS (${accuracy}% Accuracy)\nPerformance: ${correctCount}/${totalQuestions} Correct | Streak: ${bestStreak} | Rank: ${rank.title}\nTested on Dark & Orange Quiz App`;
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
@@ -106,11 +112,11 @@ export const ResultsScreen = ({
 
         <div className="results-hero-info flex-1 flex flex-col items-center sm:items-start gap-1.5 sm:gap-2">
           <div className="rank-tag inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-orange-500/15 border border-orange-500/30 text-orange-400">
-            <span>{rank.badge}</span>
+            <RankIcon width={14} height={14} className="text-orange-400" />
             <span>{rank.title}</span>
           </div>
           <h1 className="results-title text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
-            Quiz Completed!
+            Quiz Completed
           </h1>
           <p className="results-subtitle text-xs sm:text-sm text-slate-300">
             Here is your final score breakdown and comprehensive review.
@@ -136,7 +142,7 @@ export const ResultsScreen = ({
       {/* Metrics Row (2 cols mobile, 5 cols desktop) */}
       <div className="metrics-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
         <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
-          <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+          <CircleCheck width={20} height={20} className="text-emerald-400 shrink-0" />
           <div className="metric-info flex flex-col">
             <span className="metric-num text-base sm:text-xl font-extrabold text-white">{correctCount}</span>
             <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Correct</span>
@@ -144,7 +150,7 @@ export const ResultsScreen = ({
         </div>
 
         <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
-          <XCircle size={20} className="text-red-400 shrink-0" />
+          <CircleXmark width={20} height={20} className="text-red-400 shrink-0" />
           <div className="metric-info flex flex-col">
             <span className="metric-num text-base sm:text-xl font-extrabold text-white">{incorrectCount}</span>
             <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Incorrect</span>
@@ -153,7 +159,7 @@ export const ResultsScreen = ({
 
         {timedOutCount > 0 && (
           <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
-            <AlertTriangle size={20} className="text-amber-400 shrink-0" />
+            <TriangleExclamation width={20} height={20} className="text-amber-400 shrink-0" />
             <div className="metric-info flex flex-col">
               <span className="metric-num text-base sm:text-xl font-extrabold text-white">{timedOutCount}</span>
               <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Timed Out</span>
@@ -162,7 +168,7 @@ export const ResultsScreen = ({
         )}
 
         <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
-          <Flame size={20} className="text-orange-500 shrink-0" />
+          <Flame width={20} height={20} className="text-orange-500 shrink-0" />
           <div className="metric-info flex flex-col">
             <span className="metric-num text-base sm:text-xl font-extrabold text-white">{bestStreak}</span>
             <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Streak</span>
@@ -170,7 +176,7 @@ export const ResultsScreen = ({
         </div>
 
         <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3 col-span-2 sm:col-span-1">
-          <Award size={20} className="text-orange-400 shrink-0" />
+          <Clock width={20} height={20} className="text-orange-400 shrink-0" />
           <div className="metric-info flex flex-col">
             <span className="metric-num text-base sm:text-xl font-extrabold text-white">{formatTime(totalTimeSeconds)}</span>
             <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Time</span>
@@ -185,7 +191,7 @@ export const ResultsScreen = ({
           className="btn-action-primary py-3.5 px-5 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-orange-500/30 transition-all cursor-pointer min-h-[50px] touch-manipulation select-none active:scale-[0.98]"
           onClick={onRestart}
         >
-          <RotateCcw size={17} />
+          <ArrowRotateLeft width={17} height={17} />
           <span>Play Again</span>
         </button>
 
@@ -194,7 +200,7 @@ export const ResultsScreen = ({
           className="btn-action-secondary py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[50px] touch-manipulation select-none active:scale-[0.98]"
           onClick={onResetSettings}
         >
-          <Sliders size={17} />
+          <Sliders width={17} height={17} />
           <span>Settings</span>
         </button>
 
@@ -203,8 +209,8 @@ export const ResultsScreen = ({
           className="btn-action-share py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[50px] touch-manipulation select-none active:scale-[0.98]"
           onClick={handleShare}
         >
-          {copied ? <Check size={17} className="text-emerald-400" /> : <Share2 size={17} />}
-          <span>{copied ? "Copied Score!" : "Share Results"}</span>
+          {copied ? <Check width={17} height={17} className="text-emerald-400" /> : <ArrowRightFromSquare width={17} height={17} />}
+          <span>{copied ? "Copied Results" : "Share Results"}</span>
         </button>
       </div>
 
@@ -278,11 +284,11 @@ export const ResultsScreen = ({
                 >
                   <div className="review-status-col mt-0.5 shrink-0">
                     {item.isCorrect ? (
-                      <CheckCircle2 size={18} className="text-emerald-400" />
+                      <CircleCheck width={18} height={18} className="text-emerald-400" />
                     ) : item.isTimedOut ? (
-                      <AlertTriangle size={18} className="text-amber-400" />
+                      <TriangleExclamation width={18} height={18} className="text-amber-400" />
                     ) : (
-                      <XCircle size={18} className="text-red-400" />
+                      <CircleXmark width={18} height={18} className="text-red-400" />
                     )}
                   </div>
 
@@ -307,7 +313,7 @@ export const ResultsScreen = ({
                   </div>
 
                   <div className="review-toggle-col text-slate-500 shrink-0">
-                    {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    {isExpanded ? <ChevronUp width={16} height={16} /> : <ChevronDown width={16} height={16} />}
                   </div>
                 </div>
 

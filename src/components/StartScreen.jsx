@@ -2,15 +2,15 @@ import React from "react";
 import { QuizLogo } from "./QuizLogo";
 import {
   Play,
-  CheckCircle2,
+  CircleCheck,
   Clock,
   Sparkles,
-  Award,
+  Medal,
   Layers,
   Flag,
   ChevronRight,
-  Zap,
-} from "lucide-react";
+  Thunderbolt,
+} from "@gravity-ui/icons";
 import { CATEGORIES, DIFFICULTIES } from "../data/quizQuestions";
 
 export const StartScreen = ({
@@ -53,8 +53,9 @@ export const StartScreen = ({
                 Frameworks
               </span>
             </div>
-            <span className="tag-pill tag-difficulty inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/35">
-              <Award size={12} /> {difficulty === "All" ? "Intermediate" : difficulty}
+            <span className="tag-pill tag-difficulty inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/35">
+              <Medal width={13} height={13} />
+              <span>{difficulty === "All" ? "Intermediate" : difficulty}</span>
             </span>
           </div>
 
@@ -77,7 +78,7 @@ export const StartScreen = ({
         <div className="stepper-track flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none snap-x snap-mandatory">
           <div className="step-item step-active flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-purple-600 via-purple-700 to-orange-600 text-white shadow-md shadow-purple-900/30">
-              <Play size={13} className="fill-current" />
+              <Play width={13} height={13} />
               <span>Start Working</span>
             </div>
           </div>
@@ -95,7 +96,7 @@ export const StartScreen = ({
 
           <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-flag w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-slate-400">
-              <Flag size={12} />
+              <Flag width={12} height={12} />
             </div>
             <span className="step-label text-xs sm:text-sm font-medium text-slate-400">
               5 upvotes
@@ -105,7 +106,7 @@ export const StartScreen = ({
 
           <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-flag w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-slate-400">
-              <Flag size={12} />
+              <Flag width={12} height={12} />
             </div>
             <span className="step-label text-xs sm:text-sm font-medium text-slate-400">
               10 upvotes
@@ -119,8 +120,8 @@ export const StartScreen = ({
         {/* Left Column: Requirements & Overview */}
         <div className="card requirements-card rounded-xl sm:rounded-2xl border border-white/10 bg-[#14151e]/80 backdrop-blur-md p-5 sm:p-7 flex flex-col gap-4 shadow-xl">
           <h2 className="card-section-title text-base sm:text-lg font-bold text-white flex items-center gap-2">
-            <Sparkles size={18} className="text-orange-500 shrink-0" />
-            Project Overview & Rules
+            <Sparkles width={18} height={18} className="text-orange-500 shrink-0" />
+            <span>Project Overview & Rules</span>
           </h2>
           <p className="card-intro text-xs sm:text-sm text-slate-300 leading-relaxed">
             In this project, we will be making a browser based quiz. The app presents users with a series of multiple-choice questions, and after each question, provides immediate feedback on whether the selected answer is correct or incorrect.
@@ -128,35 +129,35 @@ export const StartScreen = ({
 
           <div className="requirements-list flex flex-col gap-3">
             <div className="req-item flex items-start gap-2.5">
-              <CheckCircle2 size={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
+              <CircleCheck width={16} height={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
               <div className="req-text text-xs sm:text-sm text-slate-200 leading-relaxed">
                 <strong className="text-white">Card-based questions:</strong> Questions are presented as sleek cards with answer buttons.
               </div>
             </div>
 
             <div className="req-item flex items-start gap-2.5">
-              <CheckCircle2 size={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
+              <CircleCheck width={16} height={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
               <div className="req-text text-xs sm:text-sm text-slate-200 leading-relaxed">
                 <strong className="text-white">Instant feedback:</strong> When you pick an answer, buttons immediately turn <span className="text-emerald-400 font-bold">green (correct)</span> or <span className="text-red-400 font-bold">red (incorrect)</span>, revealing the right answer.
               </div>
             </div>
 
             <div className="req-item flex items-start gap-2.5">
-              <CheckCircle2 size={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
+              <CircleCheck width={16} height={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
               <div className="req-text text-xs sm:text-sm text-slate-200 leading-relaxed">
                 <strong className="text-white">Dynamic score tally:</strong> Answering correctly increments score; streaks trigger bonus multipliers.
               </div>
             </div>
 
             <div className="req-item flex items-start gap-2.5">
-              <CheckCircle2 size={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
+              <CircleCheck width={16} height={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
               <div className="req-text text-xs sm:text-sm text-slate-200 leading-relaxed">
                 <strong className="text-white">Optional 1-minute timer:</strong> 60s per question countdown. If unattempted in time, it skips to next question with a <span className="text-orange-400 font-bold">-1 point</span> penalty.
               </div>
             </div>
 
             <div className="req-item flex items-start gap-2.5">
-              <CheckCircle2 size={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
+              <CircleCheck width={16} height={16} className="req-icon text-orange-500 shrink-0 mt-0.5" />
               <div className="req-text text-xs sm:text-sm text-slate-200 leading-relaxed">
                 <strong className="text-white">Results & Review:</strong> Complete review showing all questions, your responses, and detailed explanations.
               </div>
@@ -167,14 +168,15 @@ export const StartScreen = ({
         {/* Right Column: Quiz Configuration & Launch */}
         <div className="card config-card rounded-xl sm:rounded-2xl border border-white/10 bg-[#14151e]/80 backdrop-blur-md p-5 sm:p-7 flex flex-col gap-4 sm:gap-5 shadow-xl">
           <h2 className="card-section-title text-base sm:text-lg font-bold text-white flex items-center gap-2">
-            <Zap size={18} className="text-orange-500 shrink-0" />
-            Customize Challenge
+            <Thunderbolt width={18} height={18} className="text-orange-500 shrink-0" />
+            <span>Customize Challenge</span>
           </h2>
 
           {/* Category Select */}
           <div className="config-group flex flex-col gap-2">
             <label className="config-label text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <Layers size={14} className="text-orange-400" /> Topic Category
+              <Layers width={14} height={14} className="text-orange-400" />
+              <span>Topic Category</span>
             </label>
             <div className="pill-group flex flex-wrap gap-1.5 sm:gap-2">
               {CATEGORIES.map((cat) => (
@@ -197,7 +199,8 @@ export const StartScreen = ({
           {/* Difficulty Select */}
           <div className="config-group flex flex-col gap-2">
             <label className="config-label text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-              <Award size={14} className="text-amber-400" /> Difficulty Level
+              <Medal width={14} height={14} className="text-amber-400" />
+              <span>Difficulty Level</span>
             </label>
             <div className="pill-group flex flex-wrap gap-1.5 sm:gap-2">
               {DIFFICULTIES.map((diff) => (
@@ -221,7 +224,7 @@ export const StartScreen = ({
           <div className="config-group timer-config-group rounded-xl border border-white/10 bg-[#191b26] p-3.5 flex flex-col gap-1.5">
             <div className="timer-config-header flex items-center justify-between">
               <div className="timer-config-title flex items-center gap-2 text-sm font-bold text-white">
-                <Clock size={16} className="text-orange-500" />
+                <Clock width={16} height={16} className="text-orange-500" />
                 <span>1-Minute Question Timer</span>
               </div>
               <label className="switch relative inline-block w-11 h-6 shrink-0 cursor-pointer touch-manipulation" aria-label="Toggle 1-minute question timer">
@@ -277,9 +280,9 @@ export const StartScreen = ({
             onClick={onStart}
             autoFocus
           >
-            <Play size={18} className="fill-current" />
+            <Play width={18} height={18} />
             <span>Start Working</span>
-            <ChevronRight size={18} />
+            <ChevronRight width={18} height={18} />
           </button>
         </div>
       </div>
