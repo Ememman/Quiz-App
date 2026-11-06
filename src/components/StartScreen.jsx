@@ -4,7 +4,7 @@ import {
   Play,
   CircleCheck,
   Clock,
-  Sparkles,
+  ListCheck,
   Medal,
   Layers,
   ChevronRight,
@@ -125,7 +125,7 @@ export const StartScreen = ({
         {/* Left Column: Requirements & Overview */}
         <div className="card requirements-card rounded-xl sm:rounded-2xl border border-white/10 bg-[#14151e]/80 backdrop-blur-md p-5 sm:p-7 flex flex-col gap-4 shadow-xl">
           <h2 className="card-section-title text-base sm:text-lg font-bold text-white flex items-center gap-2">
-            <Sparkles width={18} height={18} className="text-orange-500 shrink-0" />
+            <ListCheck width={18} height={18} className="text-orange-500 shrink-0" />
             <span>Project Overview & Rules</span>
           </h2>
           <p className="card-intro text-xs sm:text-sm text-slate-300 leading-relaxed">
