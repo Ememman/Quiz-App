@@ -61,6 +61,14 @@ export function App() {
   // Calculate available pool for selected filter
   const availableCount = getFilteredQuestions(category, difficulty).length;
 
+  // Refresh favicon link
+  useEffect(() => {
+    const link = document.querySelector("link[rel*='icon']");
+    if (link) {
+      link.href = `./favicon.svg?v=3`;
+    }
+  }, []);
+
   // Sound Toggle Handler
   const handleToggleSound = () => {
     const muted = sounds.toggleMute();

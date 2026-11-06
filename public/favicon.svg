@@ -1,52 +1,130 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
   <defs>
-    <radialGradient id="fav-bg" cx="50%" cy="30%" r="80%" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#242533"/>
-      <stop offset="60%" stopColor="#14151C"/>
-      <stop offset="100%" stopColor="#0B0C10"/>
-    </radialGradient>
-    <linearGradient id="quiz-ring" x1="12" y1="15" x2="90" y2="88" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#FFF2E8"/>
-      <stop offset="16%" stopColor="#FB923C"/>
-      <stop offset="40%" stopColor="#EA580C"/>
-      <stop offset="65%" stopColor="#7C2D12"/>
-      <stop offset="84%" stopColor="#C2410C"/>
-      <stop offset="100%" stopColor="#F97316"/>
+    <!-- Outer circular ribbon: Vivid fiery orange with bright specular sheen -->
+    <linearGradient id="fav-ring" x1="10" y1="12" x2="92" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF5EB"/>
+      <stop offset="18%" stop-color="#FFA245"/>
+      <stop offset="42%" stop-color="#FF5E00"/>
+      <stop offset="70%" stop-color="#D94800"/>
+      <stop offset="85%" stop-color="#FF6A00"/>
+      <stop offset="100%" stop-color="#FFA033"/>
     </linearGradient>
-    <linearGradient id="quiz-q" x1="32" y1="25" x2="72" y2="75" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#FFFFFF"/>
-      <stop offset="22%" stopColor="#FED7AA"/>
-      <stop offset="50%" stopColor="#FB923C"/>
-      <stop offset="78%" stopColor="#F97316"/>
-      <stop offset="100%" stopColor="#C2410C"/>
+
+    <!-- Inner Q loop: White apex into brilliant tangerine and flame orange -->
+    <linearGradient id="fav-q" x1="30" y1="22" x2="74" y2="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="25%" stop-color="#FFE0B2"/>
+      <stop offset="55%" stop-color="#FF7A00"/>
+      <stop offset="85%" stop-color="#FF5000"/>
+      <stop offset="100%" stop-color="#CC3E00"/>
     </linearGradient>
-    <linearGradient id="quiz-highlight" x1="20" y1="10" x2="75" y2="75" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9"/>
-      <stop offset="35%" stopColor="#FFFFFF" stopOpacity="0.15"/>
-      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0"/>
+
+    <!-- Ring highlight -->
+    <linearGradient id="fav-highlight" x1="18" y1="8" x2="76" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="quiz-tail" x1="42" y1="56" x2="88" y2="78" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stopColor="#FEF08A"/>
-      <stop offset="28%" stopColor="#FBBF24"/>
-      <stop offset="68%" stopColor="#F97316"/>
-      <stop offset="100%" stopColor="#EA580C"/>
+
+    <!-- Q Tail: Electric golden yellow down into deep flame orange -->
+    <linearGradient id="fav-tail" x1="38" y1="52" x2="90" y2="82" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF066"/>
+      <stop offset="28%" stop-color="#FFB703"/>
+      <stop offset="70%" stop-color="#FF5E00"/>
+      <stop offset="100%" stop-color="#E04000"/>
     </linearGradient>
-    <filter id="quiz-shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000000" floodOpacity="0.65"/>
+
+    <filter id="fav-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.5"/>
     </filter>
-    <filter id="inner-shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodColor="#431407" floodOpacity="0.6"/>
+
+    <filter id="fav-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#FF5500" flood-opacity="0.4"/>
     </filter>
   </defs>
-  <rect width="100" height="100" rx="24" fill="url(#fav-bg)"/>
-  <g filter="url(#quiz-shadow)">
-    <path d="M 77 21 C 91 33 96 52 89 69 C 82 87 63 95 44 91 C 25 88 10 73 8 54 C 6 35 17 18 34 11 C 50 4 68 9 77 21" stroke="url(#quiz-ring)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 18 29 C 30 10 58 5 77 21" stroke="url(#quiz-highlight)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- OUTER CIRCULAR RIBBON -->
+  <g filter="url(#fav-shadow)">
+    <path
+      d="
+        M 77 21
+        C 91 33
+          96 52
+          89 69
+        C 82 87
+          63 95
+          44 91
+        C 25 88
+          10 73
+          8 54
+        C 6 35
+          17 18
+          34 11
+        C 50 4
+          68 9
+          77 21
+      "
+      stroke="url(#fav-ring)"
+      stroke-width="12"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Top highlight stroke -->
+    <path
+      d="M 18 29 C 30 10 58 5 77 21"
+      stroke="url(#fav-highlight)"
+      stroke-width="3.5"
+      stroke-linecap="round"
+    />
   </g>
-  <g filter="url(#inner-shadow)">
-    <path d="M 50 25 C 63 25 73 35 73 48 C 73 61 63 71 50 71 C 37 71 27 61 27 48 C 27 35 37 25 50 25" stroke="url(#quiz-q)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 42 55 C 50 62 59 70 68 76 C 75 80 82 80 87 69" stroke="url(#quiz-tail)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 35 38 C 38 31 44 28 50 28 C 56 28 62 31 65 38" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-opacity="0.6"/>
+
+  <!-- INNER LETTER Q -->
+  <g filter="url(#fav-glow)">
+    <!-- Main Q Oval Loop -->
+    <path
+      d="
+        M 50 24
+        C 64 24 74 34 74 48
+        C 74 62 64 72 50 72
+        C 36 72 26 62 26 48
+        C 26 34 36 24 50 24
+      "
+      stroke="url(#fav-q)"
+      stroke-width="11"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Dynamic Flowing Q Tail -->
+    <path
+      d="
+        M 42 54
+        C 50 62 60 70 69 77
+        C 76 81 83 81 88 69
+      "
+      stroke="url(#fav-tail)"
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Inner specular sheen -->
+    <path
+      d="M 34 37 C 37 29 44 26 50 26 C 56 26 63 29 66 37"
+      stroke="#FFFFFF"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-opacity="0.8"
+    />
   </g>
-  <path d="M 60 74 C 69 80 79 79 86 68" stroke="#FB923C" stroke-width="2" stroke-linecap="round" stroke-opacity="0.45"/>
+
+  <!-- Overlap ribbon accent -->
+  <path
+    d="M 61 74 C 70 80 80 79 87 68"
+    stroke="#FFA726"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-opacity="0.6"
+  />
 </svg>
