@@ -37,7 +37,7 @@
     "codeSnippet": ".card {\n  /* Which line creates a stacking context? */\n}",
     "options": [
       "display: flex;",
-      "isolation: isolate;",
+      "isolation: isolate;",  
       "z-index: 9999;",
       "overflow: hidden;"
     ],
@@ -178,5 +178,425 @@
     ],
     "correctIndex": 1,
     "explanation": "This classic CSS Grid pattern creates a responsive layout that automatically fits as many 240px+ columns as possible in the available space, stretching them to fill remaining space (`1fr`), without requiring any `@media` queries."
+  },
+  {
+    "id": "q13",
+    "category": "HTML",
+    "difficulty": "Beginner",
+    "question": "What is the primary accessibility purpose of the `alt` attribute on an `<img>` tag?",
+    "codeSnippet": "<img src=\"logo.svg\" alt=\"Company Logo\" />",
+    "options": [
+      "To provide a tooltip when hovering over the image with a cursor",
+      "To provide an alternative textual description for screen reader users and when images fail to load",
+      "To define the fallback MIME type for the browser rendering engine",
+      "To assist search engines with CSS layout positioning"
+    ],
+    "correctIndex": 1,
+    "explanation": "The `alt` attribute specifies alternative text for users who cannot view images, such as screen reader users and users with network failures. Decorative images should use an empty `alt=\"\"` rather than omitting the attribute."
+  },
+  {
+    "id": "q14",
+    "category": "CSS",
+    "difficulty": "Beginner",
+    "question": "In the standard CSS box model, which property controls the space between the content box and the element's border?",
+    "codeSnippet": ".box {\n  /* Which property controls inner space? */\n}",
+    "options": [
+      "margin",
+      "padding",
+      "gap",
+      "outline-offset"
+    ],
+    "correctIndex": 1,
+    "explanation": "`padding` defines the inner space between the element's content and its border. `margin` defines the outer spacing between elements."
+  },
+  {
+    "id": "q15",
+    "category": "JavaScript",
+    "difficulty": "Beginner",
+    "question": "What is the key functional difference between `==` and `===` in JavaScript?",
+    "codeSnippet": "console.log('5' == 5);  // true\nconsole.log('5' === 5); // false",
+    "options": [
+      "`==` performs type coercion before comparison, whereas `===` checks both value and type without coercion",
+      "`===` only works for comparing numbers, while `==` works for strings",
+      "`==` compares objects by deep clone value, while `===` checks pointer address",
+      "`===` is deprecated in modern ECMAScript standard"
+    ],
+    "correctIndex": 0,
+    "explanation": "The loose equality operator (`==`) coerces operands of different types to a common type before comparison. Strict equality (`===`) checks both value and type without coercion."
+  },
+  {
+    "id": "q16",
+    "category": "Frameworks",
+    "difficulty": "Beginner",
+    "question": "In React, what will happen if you update state inside a component's top-level render body without a hook like `useEffect`?",
+    "codeSnippet": "function Counter() {\n  const [count, setCount] = useState(0);\n  setCount(count + 1); // Directly in render\n  return <div>{count}</div>;\n}",
+    "options": [
+      "The component will increment once and freeze",
+      "It will trigger an infinite re-render loop causing a \"Maximum update depth exceeded\" runtime error",
+      "React will batch the call and ignore it silently",
+      "It will compile into a static HTML string"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calling `setCount` directly in the component body triggers a state change, which triggers a re-render, which immediately calls `setCount` again, producing an infinite re-render loop."
+  },
+  {
+    "id": "q17",
+    "category": "CSS",
+    "difficulty": "Advanced",
+    "question": "How do CSS Container Queries (`@container`) differ from standard Media Queries (`@media`)?",
+    "codeSnippet": "@container card (min-width: 400px) {\n  .title { font-size: 1.5rem; }\n}",
+    "options": [
+      "@container queries only style HTML5 canvas elements",
+      "@container evaluates styles based on the size of a parent/ancestor container rather than the entire browser viewport",
+      "@container queries run in Web Workers for better frame rates",
+      "@container queries require CSS Modules to be installed"
+    ],
+    "correctIndex": 1,
+    "explanation": "Container queries allow styling elements based on the dimensions of their parent container element (`container-type: inline-size`), allowing truly modular components that adapt regardless of where they are placed in a layout."
+  },
+  {
+    "id": "q18",
+    "category": "JavaScript",
+    "difficulty": "Advanced",
+    "question": "What is a Closure in JavaScript?",
+    "codeSnippet": "function createCounter() {\n  let count = 0;\n  return () => ++count;\n}",
+    "options": [
+      "A built-in method that terminates a Web Worker thread",
+      "A combination of a function bundled together with references to its surrounding lexical environment",
+      "A cryptographic hashing algorithm for securing JSON Web Tokens",
+      "An asynchronous event listener that closes after one dispatch"
+    ],
+    "correctIndex": 1,
+    "explanation": "A closure gives an inner function access to an outer function's scope even after the outer function has finished executing, preserving variables in memory through lexical scoping."
+  },
+  {
+    "id": "q19",
+    "category": "Frameworks",
+    "difficulty": "Advanced",
+    "question": "What is the primary benefit of the `useTransition` hook introduced in modern React?",
+    "codeSnippet": "const [isPending, startTransition] = useTransition();\nstartTransition(() => setSearchQuery(input));",
+    "options": [
+      "It adds CSS transition keyframes to DOM elements automatically",
+      "It lets you mark state updates as non-blocking transitions so urgent user inputs (typing, clicking) remain responsive",
+      "It transitions client components into Web Components",
+      "It transitions synchronous state updates to localStorage storage events"
+    ],
+    "correctIndex": 1,
+    "explanation": "`useTransition` allows marking non-urgent state updates (like filtering a large table or rendering heavy charts) as transitions, so urgent updates like typing in an input can interrupt them, keeping the interface snappy."
+  },
+  {
+    "id": "q20",
+    "category": "HTML",
+    "difficulty": "Advanced",
+    "question": "What is the purpose of the `rel=\"noopener noreferrer\"` attribute when opening external links with `target=\"_blank\"`?",
+    "codeSnippet": "<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">Link</a>",
+    "options": [
+      "It instructs search engine crawlers not to index the target page",
+      "It prevents the new page from accessing `window.opener` to redirect the parent page and omits the HTTP Referer header",
+      "It forces the target page to open in an isolated sandboxed iframe",
+      "It disables third-party cookies on the destination domain"
+    ],
+    "correctIndex": 1,
+    "explanation": "`noopener` prevents the newly opened tab from referencing the originating tab via `window.opener.location`, protecting against reverse tabnabbing phishing attacks. `noreferrer` omits the HTTP Referer header."
+  },
+  {
+    "id": "q21",
+    "category": "JavaScript",
+    "difficulty": "Intermediate",
+    "question": "What will `[1, 2, 3] + [4, 5, 6]` evaluate to in JavaScript?",
+    "codeSnippet": "console.log([1, 2, 3] + [4, 5, 6]);",
+    "options": [
+      "[1, 2, 3, 4, 5, 6]",
+      "\"1,2,34,5,6\"",
+      "NaN",
+      "Throws a TypeError"
+    ],
+    "correctIndex": 1,
+    "explanation": "The `+` operator on objects triggers `valueOf()` then `toString()`. Each array converts to a string (\"1,2,3\" and \"4,5,6\"). String concatenation produces \"1,2,34,5,6\"."
+  },
+  {
+    "id": "q22",
+    "category": "CSS",
+    "difficulty": "Beginner",
+    "question": "Which CSS flexbox property aligns flex items along the cross axis (perpendicular to the main axis)?",
+    "codeSnippet": ".container {\n  display: flex;\n  /* Which property aligns items on the cross axis? */\n}",
+    "options": [
+      "justify-content",
+      "align-items",
+      "flex-direction",
+      "flex-wrap"
+    ],
+    "correctIndex": 1,
+    "explanation": "`align-items` aligns items along the cross axis. `justify-content` distributes space and aligns items along the main axis."
+  },
+  {
+    "id": "q23",
+    "category": "Frameworks",
+    "difficulty": "Intermediate",
+    "question": "In React, what is the role of the `key` prop when rendering lists of elements?",
+    "codeSnippet": "{items.map(item => <Item key={item.id} data={item} />)}",
+    "options": [
+      "It sets the HTML `id` attribute on the generated DOM node",
+      "It provides a stable identity for React's diffing reconciliation algorithm to track which items changed, were added, or removed",
+      "It encrypts the component props in memory for security",
+      "It determines the CSS z-index stacking order of child elements"
+    ],
+    "correctIndex": 1,
+    "explanation": "Keys give elements a stable identity across renders. React uses keys to match existing children in the previous tree with children in the subsequent tree, preventing expensive re-mounts and bugs with stateful inputs."
+  },
+  {
+    "id": "q24",
+    "category": "HTML",
+    "difficulty": "Beginner",
+    "question": "Which HTML tag is used to embed client-side vector graphics directly in an HTML document without rasterization?",
+    "codeSnippet": "<svg viewBox=\"0 0 100 100\">\n  <circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"orange\" />\n</svg>",
+    "options": [
+      "<canvas>",
+      "<svg>",
+      "<picture>",
+      "<vector>"
+    ],
+    "correctIndex": 1,
+    "explanation": "The `<svg>` element embeds scalable vector graphics directly into the DOM as XML nodes that can be styled and animated with CSS, scaling crisply to any resolution without pixelation."
+  },
+  {
+    "id": "q25",
+    "category": "HTML",
+    "difficulty": "Beginner",
+    "question": "Which attribute on an `<input>` element connects it directly with a `<datalist>` of predefined auto-complete options?",
+    "codeSnippet": "<input type=\"text\" list=\"browsers\" />\n<datalist id=\"browsers\">\n  <option value=\"Chrome\" />\n</datalist>",
+    "options": [
+      "data-source",
+      "list",
+      "autocomplete-id",
+      "options"
+    ],
+    "correctIndex": 1,
+    "explanation": "The `list` attribute on an `<input>` accepts the `id` of a `<datalist>` element located in the same document, providing native auto-suggest dropdown options without third-party JavaScript."
+  },
+  {
+    "id": "q26",
+    "category": "HTML",
+    "difficulty": "Intermediate",
+    "question": "What is the primary benefit of the modern `<dialog>` HTML5 element compared to a traditional `<div>` modal?",
+    "codeSnippet": "const dialog = document.querySelector('dialog');\ndialog.showModal();",
+    "options": [
+      "It renders inside WebGL 3D canvas context",
+      "Calling .showModal() automatically enforces top-layer rendering, native backdrop pseudo-element (::backdrop), and focus trapping",
+      "It encrypts form values submitted within it",
+      "It disables all CSS styling to maximize battery life"
+    ],
+    "correctIndex": 1,
+    "explanation": "The `<dialog>` element with `.showModal()` places the dialog in the browser's top layer (above all `z-index`), provides the `::backdrop` pseudo-element, traps keyboard focus, and handles the `Escape` key automatically."
+  },
+  {
+    "id": "q27",
+    "category": "HTML",
+    "difficulty": "Advanced",
+    "question": "In the Web Components standard, what is the purpose of the `<slot>` element inside a `<template>`?",
+    "codeSnippet": "<template id=\"user-card\">\n  <div class=\"card\">\n    <slot name=\"username\">Anonymous</slot>\n  </div>\n</template>",
+    "options": [
+      "It stores cookies securely within the Shadow DOM",
+      "It acts as a placeholder that gets dynamically filled by markup provided by the consumer inside the custom element",
+      "It lazily downloads external web fonts",
+      "It binds state to Redux store automatically"
+    ],
+    "correctIndex": 1,
+    "explanation": "`<slot>` elements are placeholders inside a Web Component's Shadow DOM where consumers can project external HTML markup (content projection), supporting both default and named slots."
+  },
+  {
+    "id": "q28",
+    "category": "CSS",
+    "difficulty": "Beginner",
+    "question": "What does `box-sizing: border-box` do in CSS?",
+    "codeSnippet": "* {\n  box-sizing: border-box;\n}",
+    "options": [
+      "It removes all borders from elements",
+      "It includes padding and border within the element's total declared width and height",
+      "It creates a 3D shadow around every block container",
+      "It prevents elements from collapsing vertically"
+    ],
+    "correctIndex": 1,
+    "explanation": "With `content-box` (the default), padding and borders are added on top of width. `border-box` includes padding and borders inside the declared width and height, preventing layout breakage and unwanted scrollbars."
+  },
+  {
+    "id": "q29",
+    "category": "CSS",
+    "difficulty": "Intermediate",
+    "question": "What is the result of using the `clamp()` function in modern CSS typography?",
+    "codeSnippet": "h1 {\n  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);\n}",
+    "options": [
+      "It rotates font glyphs between 1.5deg and 3deg",
+      "It creates fluid typography that scales dynamically with viewport width between a defined minimum (1.5rem) and maximum (3rem)",
+      "It clips any overflow text with an ellipsis (...)",
+      "It converts viewport units into fixed pixel integers"
+    ],
+    "correctIndex": 1,
+    "explanation": "`clamp(min, preferred, max)` sets an accessible fluid value that scales dynamically with the viewport width while preventing the text from getting unreadably small on phones or overwhelmingly huge on ultra-wide screens."
+  },
+  {
+    "id": "q30",
+    "category": "CSS",
+    "difficulty": "Advanced",
+    "question": "What is the purpose of CSS Cascade Layers (`@layer`)?",
+    "codeSnippet": "@layer reset, framework, custom;\n\n@layer framework {\n  .btn { background: blue !important; }\n}\n@layer custom {\n  .btn { background: orange; }\n}",
+    "options": [
+      "To compress CSS stylesheets into WebP binary images",
+      "To establish an explicit order of specificity precedence so styles in later layers override earlier layers regardless of selector specificity",
+      "To execute CSS computations on GPU thread",
+      "To automatically generate CSS media queries for dark mode"
+    ],
+    "correctIndex": 1,
+    "explanation": "`@layer` allows developers to control the cascade priority. Regardless of selector specificity within a layer, declarations in later layers (`custom`) take precedence over earlier layers (`framework`), ending specificity wars."
+  },
+  {
+    "id": "q31",
+    "category": "CSS",
+    "difficulty": "Advanced",
+    "question": "What does CSS `subgrid` enable when applied to a nested grid item?",
+    "codeSnippet": ".parent {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n}\n.child {\n  display: grid;\n  grid-template-columns: subgrid;\n}",
+    "options": [
+      "It creates an isolated canvas sandbox inside the item",
+      "It allows the child grid to inherit and align directly with the track lines of its parent grid",
+      "It automatically converts CSS Grid into Flexbox on mobile devices",
+      "It restricts child elements to a maximum of 3 CSS rows"
+    ],
+    "correctIndex": 1,
+    "explanation": "`grid-template-columns: subgrid` (or rows) allows nested grids to participate in the sizing and alignment of the parent grid tracks, enabling cards in different columns to align header and footer rows with pixel precision."
+  },
+  {
+    "id": "q32",
+    "category": "JavaScript",
+    "difficulty": "Beginner",
+    "question": "Which Array method returns a new array containing only elements that satisfy a provided test function?",
+    "codeSnippet": "const scores = [85, 42, 98, 61];\nconst passing = scores.filter(s => s >= 70);",
+    "options": [
+      ".map()",
+      ".filter()",
+      ".forEach()",
+      ".find()"
+    ],
+    "correctIndex": 1,
+    "explanation": "`.filter()` creates a shallow copy of an array filtered down to just the elements from the given array that pass the test implemented by the provided callback function."
+  },
+  {
+    "id": "q33",
+    "category": "JavaScript",
+    "difficulty": "Beginner",
+    "question": "What is the output of the following optional chaining and nullish coalescing expression?",
+    "codeSnippet": "const user = { profile: { score: 0 } };\nconst score = user.profile?.score ?? 100;\nconsole.log(score);",
+    "options": [
+      "0",
+      "100",
+      "undefined",
+      "Throws a ReferenceError"
+    ],
+    "correctIndex": 0,
+    "explanation": "The nullish coalescing operator (`??`) only falls back to the right-hand value if the left operand is `null` or `undefined`. Since `score` is `0` (a falsy number, but not null/undefined), it evaluates to `0`."
+  },
+  {
+    "id": "q34",
+    "category": "JavaScript",
+    "difficulty": "Advanced",
+    "question": "What is the critical distinction between `event.target` and `event.currentTarget` in JavaScript event delegation?",
+    "codeSnippet": "document.querySelector('ul').addEventListener('click', (e) => {\n  console.log(e.target, e.currentTarget);\n});",
+    "options": [
+      "`e.target` is always the window object, while `e.currentTarget` is the document body",
+      "`e.target` is the element that dispatched the event (e.g. the clicked <li> or <span>), while `e.currentTarget` is the element where the event listener is attached (the <ul>)",
+      "`e.currentTarget` is only available in asynchronous fetch callbacks",
+      "`e.target` is deprecated in modern ECMAScript standard"
+    ],
+    "correctIndex": 1,
+    "explanation": "`event.target` refers to the innermost element that was clicked or triggered the event. `event.currentTarget` always refers to the element to which the event handler has been attached (e.g., the parent `<ul>` in event delegation)."
+  },
+  {
+    "id": "q35",
+    "category": "JavaScript",
+    "difficulty": "Advanced",
+    "question": "What will executing a generator function directly return?",
+    "codeSnippet": "function* numbers() {\n  yield 1;\n  yield 2;\n}\nconst result = numbers();",
+    "options": [
+      "The value 1",
+      "An array [1, 2]",
+      "A Generator object conforming to both the Iterable and Iterator protocols",
+      "A Promise that resolves to undefined"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calling a generator function (`function*`) does not execute its body immediately; instead, it returns a Generator iterator object. Calling `.next()` on that iterator executes code until the next `yield` expression."
+  },
+  {
+    "id": "q36",
+    "category": "Frameworks",
+    "difficulty": "Beginner",
+    "question": "In React, what is the recommended way to conditionally render a component based on a boolean condition?",
+    "codeSnippet": "{isLoggedIn ? <UserDashboard /> : <LoginForm />}",
+    "options": [
+      "Using a ternary operator or if/else statements",
+      "Using CSS `display: none` on both components simultaneously",
+      "Calling window.location.reload() inside render",
+      "Modifying document.body.innerHTML directly"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ternary operators (`condition ? <A /> : <B />`), logical AND (`condition && <A />`), and standard JavaScript `if` blocks are the declarative standard for conditional rendering in React and JSX."
+  },
+  {
+    "id": "q37",
+    "category": "Frameworks",
+    "difficulty": "Beginner",
+    "question": "Why do React components need to return a single root element (or Fragment)?",
+    "codeSnippet": "return (\n  <>\n    <h1>Title</h1>\n    <p>Subtitle</p>\n  </>\n);",
+    "options": [
+      "HTML5 specification bans having multiple sibling elements",
+      "JSX transpiles into JavaScript function calls (React.createElement or jsx()), which can only return a single expression value",
+      "Browsers crash when receiving more than 1 tag per HTTP request",
+      "Fragments increase CSS rendering speed by 80%"
+    ],
+    "correctIndex": 1,
+    "explanation": "JSX is syntactic sugar for function calls like `_jsx(Component, ...)`. In JavaScript, a function cannot return two separate values simultaneously without grouping them into a single container or Fragment array."
+  },
+  {
+    "id": "q38",
+    "category": "Frameworks",
+    "difficulty": "Advanced",
+    "question": "In React Server Components (RSC), what is the key difference between Server Components and Client Components?",
+    "codeSnippet": "// App.tsx (Server Component)\nimport ClientWidget from './ClientWidget'; // 'use client'",
+    "options": [
+      "Server Components execute only on the server, send zero JavaScript bundle bytes to the client, and cannot use state hooks or browser event listeners",
+      "Server Components can only render raw plain text without HTML tags",
+      "Client Components cannot receive props from Server Components",
+      "Server Components require Node.js child_process on every keystroke"
+    ],
+    "correctIndex": 0,
+    "explanation": "Server Components run exclusively on the server (or during build), accessing backend resources directly without sending their code dependencies to the client bundle. Client Components (marked with `'use client'`) are hydrated on the browser and can use interactivity, `useState`, and browser APIs."
+  },
+  {
+    "id": "q39",
+    "category": "Frameworks",
+    "difficulty": "Advanced",
+    "question": "What rule must be followed when calling React Hooks?",
+    "codeSnippet": "function Profile({ userId }) {\n  // Which line violates the Rules of Hooks?\n  if (userId) {\n    useEffect(() => {}, []);\n  }\n}",
+    "options": [
+      "Hooks must only be called inside class components",
+      "Hooks must only be called at the top level of React function components and never inside loops, conditions, or nested functions",
+      "Hooks can only be called from inside setTimeout callbacks",
+      "Hooks must always receive at least 3 arguments"
+    ],
+    "correctIndex": 1,
+    "explanation": "React relies on the call order of hooks between renders to preserve state across renders. Calling hooks conditionally or inside loops alters the hook call order index, corrupting React's internal fiber state."
+  },
+  {
+    "id": "q40",
+    "category": "HTML",
+    "difficulty": "Intermediate",
+    "question": "What is the purpose of the HTML5 `<template>` element?",
+    "codeSnippet": "<template id=\"row-template\">\n  <tr><td class=\"name\"></td></tr>\n</template>",
+    "options": [
+      "To render an animated loading skeleton",
+      "To hold client-side content that is not rendered when the page loads, but can be instantiated and inserted at runtime using JavaScript",
+      "To define email templates for mailto links",
+      "To force browsers to download scripts asynchronously"
+    ],
+    "correctIndex": 1,
+    "explanation": "Content inside `<template>` is parsed by the HTML parser but not rendered or executed (scripts inside won't run and images won't download) until cloned and inserted into the active DOM using JavaScript (`template.content.cloneNode(true)`)."
   }
 ]

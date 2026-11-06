@@ -57,6 +57,7 @@ html,
 body {
   width: 100%;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   background-color: var(--bg-dark-950);
   color: var(--text-primary);
   font-family: var(--font-sans);
@@ -64,10 +65,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 #root {
   min-height: 100vh;
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
 }

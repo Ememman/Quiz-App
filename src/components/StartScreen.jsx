@@ -73,9 +73,9 @@ export const StartScreen = ({
           Start building, submit solution and get feedback from the community.
         </p>
 
-        {/* Stepper with mobile horizontal scrolling */}
-        <div className="stepper-track flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
-          <div className="step-item step-active flex items-center gap-1.5 shrink-0">
+        {/* Stepper with mobile horizontal scrolling and snap */}
+        <div className="stepper-track flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1.5 sm:pb-0 scrollbar-none snap-x snap-mandatory">
+          <div className="step-item step-active flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-pill flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-gradient-to-r from-purple-600 via-purple-700 to-orange-600 text-white shadow-md shadow-purple-900/30">
               <Play size={13} className="fill-current" />
               <span>Start Working</span>
@@ -83,7 +83,7 @@ export const StartScreen = ({
           </div>
           <div className="step-line hidden sm:block h-[2px] min-w-4 flex-1 bg-white/10" />
 
-          <div className="step-item flex items-center gap-1.5 shrink-0">
+          <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-number w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-[11px] font-bold text-slate-400">
               2
             </div>
@@ -93,7 +93,7 @@ export const StartScreen = ({
           </div>
           <div className="step-line hidden sm:block h-[2px] min-w-4 flex-1 bg-white/10" />
 
-          <div className="step-item flex items-center gap-1.5 shrink-0">
+          <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-flag w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-slate-400">
               <Flag size={12} />
             </div>
@@ -103,7 +103,7 @@ export const StartScreen = ({
           </div>
           <div className="step-line hidden sm:block h-[2px] min-w-4 flex-1 bg-white/10" />
 
-          <div className="step-item flex items-center gap-1.5 shrink-0">
+          <div className="step-item flex items-center gap-1.5 shrink-0 snap-start">
             <div className="step-badge step-flag w-6 h-6 rounded-full bg-[#191b26] border border-white/10 flex items-center justify-center text-slate-400">
               <Flag size={12} />
             </div>
@@ -181,7 +181,7 @@ export const StartScreen = ({
                 <button
                   key={cat}
                   type="button"
-                  className={`pill-option text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full border transition-all cursor-pointer min-h-[36px] flex items-center ${
+                  className={`pill-option text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full border transition-all cursor-pointer min-h-[38px] flex items-center touch-manipulation select-none active:scale-95 ${
                     category === cat
                       ? "bg-orange-500/20 border-orange-500 text-white shadow-sm shadow-orange-500/30"
                       : "bg-[#191b26] border-white/10 text-slate-300 hover:border-orange-500/40 hover:bg-[#202230]"
@@ -204,7 +204,7 @@ export const StartScreen = ({
                 <button
                   key={diff}
                   type="button"
-                  className={`pill-option text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full border transition-all cursor-pointer min-h-[36px] flex items-center ${
+                  className={`pill-option text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full border transition-all cursor-pointer min-h-[38px] flex items-center touch-manipulation select-none active:scale-95 ${
                     difficulty === diff
                       ? "bg-orange-500/20 border-orange-500 text-white shadow-sm shadow-orange-500/30"
                       : "bg-[#191b26] border-white/10 text-slate-300 hover:border-orange-500/40 hover:bg-[#202230]"
@@ -224,7 +224,7 @@ export const StartScreen = ({
                 <Clock size={16} className="text-orange-500" />
                 <span>1-Minute Question Timer</span>
               </div>
-              <label className="switch relative inline-block w-11 h-6 shrink-0 cursor-pointer" aria-label="Toggle 1-minute question timer">
+              <label className="switch relative inline-block w-11 h-6 shrink-0 cursor-pointer touch-manipulation" aria-label="Toggle 1-minute question timer">
                 <input
                   type="checkbox"
                   className="opacity-0 w-0 h-0"
@@ -251,7 +251,7 @@ export const StartScreen = ({
                 <button
                   key={cnt}
                   type="button"
-                  className={`count-btn py-2 px-3 rounded-lg text-xs sm:text-sm font-semibold border text-center transition-all cursor-pointer min-h-[40px] flex items-center justify-center ${
+                  className={`count-btn py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold border text-center transition-all cursor-pointer min-h-[42px] flex items-center justify-center touch-manipulation select-none active:scale-95 ${
                     questionCount === cnt
                       ? "bg-orange-500/20 border-orange-500 text-white font-bold"
                       : "bg-[#191b26] border-white/10 text-slate-300 hover:bg-[#202230]"
@@ -273,7 +273,7 @@ export const StartScreen = ({
           {/* Start Working Button */}
           <button
             type="button"
-            className="btn-start-working w-full py-3.5 sm:py-4 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-extrabold text-base sm:text-lg shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[50px] active:scale-[0.99]"
+            className="btn-start-working w-full py-3.5 sm:py-4 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-extrabold text-base sm:text-lg shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all cursor-pointer flex items-center justify-center gap-2 min-h-[52px] touch-manipulation select-none active:scale-[0.98]"
             onClick={onStart}
             autoFocus
           >

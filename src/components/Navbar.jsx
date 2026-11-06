@@ -12,7 +12,7 @@ export const Navbar = ({
   currentView,
 }) => {
   return (
-    <header className="quiz-navbar sticky top-0 z-50 w-full backdrop-blur-md bg-[#0f1016]/85 border-b border-white/10 px-3 sm:px-6 py-2.5 transition-all">
+    <header className="quiz-navbar sticky top-0 z-50 w-full backdrop-blur-md bg-[#0f1016]/85 border-b border-white/10 px-3 sm:px-6 py-2.5 pt-[max(0.625rem,env(safe-area-inset-top))] transition-all">
       <div className="navbar-container max-w-5xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
         {/* Logo and branding */}
         <div className="navbar-brand flex items-center gap-2 sm:gap-3 cursor-pointer group">

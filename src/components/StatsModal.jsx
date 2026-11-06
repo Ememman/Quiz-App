@@ -74,7 +74,7 @@ export const StatsModal = ({ isOpen, onClose, stats, onResetStats }) => {
         <div className="modal-footer px-4 sm:px-6 py-3 border-t border-white/10 flex items-center justify-between gap-2">
           <button
             type="button"
-            className="btn-reset-stats px-3 py-1.5 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/15 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="btn-reset-stats px-3 py-2 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/15 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer touch-manipulation select-none active:scale-95"
             onClick={() => {
               if (window.confirm("Reset all stored quiz statistics?")) {
                 onResetStats();
@@ -87,7 +87,7 @@ export const StatsModal = ({ isOpen, onClose, stats, onResetStats }) => {
 
           <button
             type="button"
-            className="btn-modal-close px-5 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm transition-colors cursor-pointer"
+            className="btn-modal-close px-5 py-2 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs sm:text-sm transition-colors cursor-pointer touch-manipulation select-none active:scale-95 min-h-[38px]"
             onClick={onClose}
           >
             Done

@@ -182,7 +182,7 @@ export const ResultsScreen = ({
       <div className="results-actions-bar grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
         <button
           type="button"
-          className="btn-action-primary py-3.5 px-5 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-orange-500/30 transition-all cursor-pointer min-h-[46px]"
+          className="btn-action-primary py-3.5 px-5 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-orange-500/30 transition-all cursor-pointer min-h-[50px] touch-manipulation select-none active:scale-[0.98]"
           onClick={onRestart}
         >
           <RotateCcw size={17} />
@@ -191,7 +191,7 @@ export const ResultsScreen = ({
 
         <button
           type="button"
-          className="btn-action-secondary py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[46px]"
+          className="btn-action-secondary py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[50px] touch-manipulation select-none active:scale-[0.98]"
           onClick={onResetSettings}
         >
           <Sliders size={17} />
@@ -200,7 +200,7 @@ export const ResultsScreen = ({
 
         <button
           type="button"
-          className="btn-action-share py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[46px]"
+          className="btn-action-share py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[50px] touch-manipulation select-none active:scale-[0.98]"
           onClick={handleShare}
         >
           {copied ? <Check size={17} className="text-emerald-400" /> : <Share2 size={17} />}

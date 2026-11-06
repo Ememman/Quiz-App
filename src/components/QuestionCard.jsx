@@ -165,7 +165,7 @@ export const QuestionCard = ({
             const isCorrect = idx === question.correctIndex;
             const showFeedback = hasAnswered || isTimedOut;
 
-            let buttonClass = "option-btn w-full p-3 sm:p-4 rounded-xl border text-left flex items-center gap-3 transition-all cursor-pointer min-h-[50px] relative ";
+            let buttonClass = "option-btn w-full p-3 sm:p-4 rounded-xl border text-left flex items-center gap-3 transition-all cursor-pointer min-h-[52px] relative touch-manipulation select-none active:scale-[0.99] ";
             if (showFeedback) {
               if (isCorrect) {
                 buttonClass += "bg-emerald-500/15 border-emerald-500 text-white shadow-lg shadow-emerald-500/20";
@@ -199,7 +199,7 @@ export const QuestionCard = ({
                   {optionLetters[idx]}
                 </div>
 
-                <div className="option-text flex-1 text-xs sm:text-base font-medium leading-snug">
+                <div className="option-text flex-1 text-xs sm:text-base font-medium leading-snug break-words">
                   {option}
                 </div>
 
@@ -246,7 +246,7 @@ export const QuestionCard = ({
 
             <button
               type="button"
-              className="btn-next-question w-full sm:w-auto py-3 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[46px]"
+              className="btn-next-question w-full sm:w-auto py-3.5 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[50px] touch-manipulation select-none active:scale-[0.98]"
               onClick={onNext}
               autoFocus
             >
