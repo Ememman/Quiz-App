@@ -1,0 +1,182 @@
+[
+  {
+    "id": "q1",
+    "category": "JavaScript",
+    "difficulty": "Intermediate",
+    "question": "What will be logged to the console when the following code executes?",
+    "codeSnippet": "console.log(typeof (function() {})());",
+    "options": [
+      "\"function\"",
+      "\"undefined\"",
+      "\"object\"",
+      "Throws a TypeError"
+    ],
+    "correctIndex": 1,
+    "explanation": "The immediately invoked function expression (IIFE) `(function() {})()` executes and returns nothing, so its evaluation result is `undefined`. Therefore, `typeof undefined` produces the string \"undefined\"."
+  },
+  {
+    "id": "q2",
+    "category": "Frameworks",
+    "difficulty": "Intermediate",
+    "question": "In React 18 & 19, what is the primary purpose of the `useId` hook?",
+    "codeSnippet": "const id = useId();\nreturn <label htmlFor={id}>Email</label>;",
+    "options": [
+      "Generating unique cryptographic UUIDs for database records",
+      "Generating stable unique IDs for accessibility attributes that match across client and server hydration",
+      "Replacing React key props inside .map() loops",
+      "Assigning random IDs to DOM elements for CSS animations"
+    ],
+    "correctIndex": 1,
+    "explanation": "`useId` generates unique, deterministic identifiers that prevent hydration mismatch errors between server-rendered HTML and client hydration, specifically meant for connecting form inputs with labels and aria attributes."
+  },
+  {
+    "id": "q3",
+    "category": "CSS",
+    "difficulty": "Intermediate",
+    "question": "Which CSS property combination creates a new stacking context without changing element position?",
+    "codeSnippet": ".card {\n  /* Which line creates a stacking context? */\n}",
+    "options": [
+      "display: flex;",
+      "isolation: isolate;",
+      "z-index: 9999;",
+      "overflow: hidden;"
+    ],
+    "correctIndex": 1,
+    "explanation": "`isolation: isolate;` explicitly creates a new stacking context for the element without requiring position properties, opacity, or 3D transforms. `z-index` only creates a stacking context on positioned elements or flex/grid children."
+  },
+  {
+    "id": "q4",
+    "category": "JavaScript",
+    "difficulty": "Intermediate",
+    "question": "What is the output of the following microtask / macrotask execution order?",
+    "codeSnippet": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
+    "options": [
+      "1, 2, 3, 4",
+      "1, 4, 2, 3",
+      "1, 4, 3, 2",
+      "3, 1, 4, 2"
+    ],
+    "correctIndex": 2,
+    "explanation": "Synchronous code runs first ('1' and '4'). Microtasks (`Promise.then`) run next before any macrotasks ('3'). Macrotasks (`setTimeout`) run last ('2'). Thus the output order is 1, 4, 3, 2."
+  },
+  {
+    "id": "q5",
+    "category": "HTML",
+    "difficulty": "Intermediate",
+    "question": "When loading external scripts, what is the key difference between `defer` and `async`?",
+    "codeSnippet": "<script src=\"app.js\" defer></script>\n<script src=\"analytics.js\" async></script>",
+    "options": [
+      "`defer` blocks DOM parsing while `async` does not",
+      "`defer` executes scripts in document order after HTML parsing is complete, while `async` executes as soon as downloaded",
+      "`async` guarantees execution before DOMContentLoaded, whereas `defer` executes after window.onload",
+      "`defer` only works with inline scripts, whereas `async` only works with external files"
+    ],
+    "correctIndex": 1,
+    "explanation": "Both download asynchronously without blocking HTML parsing. However, `defer` scripts preserve document order and wait until HTML parsing finishes right before `DOMContentLoaded`. `async` executes immediately once downloaded, pausing HTML parsing if still in progress."
+  },
+  {
+    "id": "q6",
+    "category": "Frameworks",
+    "difficulty": "Intermediate",
+    "question": "Why does React require state to be updated immutably instead of modifying objects directly?",
+    "codeSnippet": "// Why avoid: user.name = 'Alex'; setUser(user);\n// Why prefer: setUser({ ...user, name: 'Alex' });",
+    "options": [
+      "JavaScript freezes all object memory in React render phase",
+      "React relies on reference equality (Object.is) to detect state changes and trigger re-renders",
+      "Direct mutation deletes the previous props history from the browser cache",
+      "Immutable objects occupy 50% less RAM in V8 engine"
+    ],
+    "correctIndex": 1,
+    "explanation": "React checks `Object.is(previousState, nextState)` to determine if a re-render is necessary. If you mutate the object in place, the memory reference remains identical, so React assumes nothing changed and skips re-rendering."
+  },
+  {
+    "id": "q7",
+    "category": "CSS",
+    "difficulty": "Intermediate",
+    "question": "What does the modern CSS `:has()` pseudo-class enable developers to do?",
+    "codeSnippet": "article:has(img.hero) {\n  grid-column: span 2;\n}",
+    "options": [
+      "Select only elements that contain inline SVG icons",
+      "Act as a parent / previous-sibling selector based on whether it contains matching descendants",
+      "Check whether the browser supports a specific CSS feature like @supports",
+      "Filter elements by computed JavaScript properties"
+    ],
+    "correctIndex": 1,
+    "explanation": "The `:has()` selector, known as the 'parent selector', allows styling an element based on its children or following siblings, solving one of CSS's longest-standing limitations without needing JavaScript."
+  },
+  {
+    "id": "q8",
+    "category": "JavaScript",
+    "difficulty": "Intermediate",
+    "question": "What is the value of `result` after executing the following array methods?",
+    "codeSnippet": "const nums = [1, 2, 3, 4];\nconst result = nums.reduce((acc, curr) => {\n  return curr % 2 === 0 ? acc + curr : acc;\n}, 0);",
+    "options": [
+      "10",
+      "6",
+      "4",
+      "undefined"
+    ],
+    "correctIndex": 1,
+    "explanation": "The accumulator starts at 0. For each element: 1 (odd) -> acc remains 0; 2 (even) -> acc becomes 0 + 2 = 2; 3 (odd) -> acc remains 2; 4 (even) -> acc becomes 2 + 4 = 6. Final result is 6."
+  },
+  {
+    "id": "q9",
+    "category": "HTML",
+    "difficulty": "Intermediate",
+    "question": "Which HTML5 semantic element is most appropriate for grouping self-contained content with an optional caption, like code listings or diagrams?",
+    "codeSnippet": "<figure>\n  <pre><code>const x = 42;</code></pre>\n  <figcaption>Listing 1: Declaring a constant</figcaption>\n</figure>",
+    "options": [
+      "<aside>",
+      "<figure> with <figcaption>",
+      "<section> with <header>",
+      "<details> with <summary>"
+    ],
+    "correctIndex": 1,
+    "explanation": "The `<figure>` element represents self-contained content, often with a caption specified via `<figcaption>`, which can be moved away from the primary flow of text without affecting the document's meaning."
+  },
+  {
+    "id": "q10",
+    "category": "JavaScript",
+    "difficulty": "Advanced",
+    "question": "How does `WeakMap` differ from a standard `Map` in JavaScript?",
+    "codeSnippet": "const wm = new WeakMap();\nlet obj = { role: 'admin' };\nwm.set(obj, 'metadata');",
+    "options": [
+      "WeakMap can only store numbers and strings as keys",
+      "Keys must be objects (or non-registered symbols) and are held weakly, allowing garbage collection when no other references exist",
+      "WeakMap values are automatically cloned to prevent mutation leaks",
+      "WeakMap supports iteration using for...of and .keys() while Map does not"
+    ],
+    "correctIndex": 1,
+    "explanation": "`WeakMap` keys must be garbage-collectible (objects or non-registered symbols). Because references are weak, if no other reference to key exists, it is garbage collected. As a result, WeakMap is not iterable and does not have a `.size` property."
+  },
+  {
+    "id": "q11",
+    "category": "Frameworks",
+    "difficulty": "Intermediate",
+    "question": "What problem does the `useCallback` hook solve in React?",
+    "codeSnippet": "const handleClick = useCallback(() => {\n  trackEvent(id);\n}, [id]);",
+    "options": [
+      "It memoizes the return value of an expensive calculation",
+      "It returns a memoized callback function reference to prevent unnecessary child component re-renders when passed as a prop",
+      "It turns asynchronous functions into synchronous callbacks",
+      "It binds the function to the Window global context"
+    ],
+    "correctIndex": 1,
+    "explanation": "`useCallback` caches a function definition between renders. When passed to memoized child components (`React.memo`), it preserves referential equality so the child doesn't re-render unless dependency values change."
+  },
+  {
+    "id": "q12",
+    "category": "CSS",
+    "difficulty": "Intermediate",
+    "question": "In CSS Grid, what does `grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))` accomplish?",
+    "codeSnippet": ".grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n}",
+    "options": [
+      "Creates a fixed 4-column layout that breaks on mobile screens",
+      "Creates an intrinsically responsive grid where columns wrap automatically without needing media queries",
+      "Limits the maximum number of items to 240 items per container",
+      "Forces all grid rows to fit into a 1fr fixed height"
+    ],
+    "correctIndex": 1,
+    "explanation": "This classic CSS Grid pattern creates a responsive layout that automatically fits as many 240px+ columns as possible in the available space, stretching them to fill remaining space (`1fr`), without requiring any `@media` queries."
+  }
+]
