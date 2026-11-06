@@ -62,32 +62,42 @@ export const QuestionCard = ({
   const optionLetters = ["A", "B", "C", "D"];
 
   return (
-    <div className="question-card-wrapper">
+    <div className="question-card-wrapper max-w-3xl mx-auto flex flex-col gap-3 sm:gap-4 animate-fade-in w-full">
       {/* Top Progress & HUD bar */}
-      <div className="card-top-hud">
-        <div className="hud-meta-left">
-          <span className="question-counter">
-            Question <strong>{currentIndex + 1}</strong> of {totalQuestions}
+      <div className="card-top-hud flex flex-wrap items-center justify-between gap-2.5">
+        <div className="hud-meta-left flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <span className="question-counter text-xs sm:text-sm text-slate-300">
+            Question <strong className="text-white font-bold">{currentIndex + 1}</strong> of {totalQuestions}
           </span>
-          <span className="badge-tag">{question.category}</span>
-          <span className="badge-diff">{question.difficulty}</span>
+          <span className="badge-tag text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded bg-orange-500/15 text-orange-400 border border-orange-500/30">
+            {question.category}
+          </span>
+          <span className="badge-diff text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded bg-[#191b26] text-slate-400 border border-white/10">
+            {question.difficulty}
+          </span>
         </div>
 
         {/* 60-Second Timer Gauge */}
         {timerEnabled && (
           <div
-            className={`timer-gauge ${
-              timeRemaining <= 10 && !hasAnswered ? "timer-warning" : ""
-            } ${isTimedOut ? "timer-expired" : ""}`}
+            className={`timer-gauge flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold border transition-all ${
+              timeRemaining <= 10 && !hasAnswered
+                ? "bg-red-500/15 border-red-500/50 text-red-400 animate-pulse"
+                : isTimedOut
+                ? "bg-amber-500/15 border-amber-500/50 text-amber-400"
+                : "bg-[#14151e] border-white/10 text-white"
+            }`}
             title="Time remaining for this question"
           >
-            <Clock size={16} className="timer-icon" />
-            <span className="timer-digits">
+            <Clock size={14} className={timeRemaining <= 10 && !hasAnswered ? "text-red-400" : "text-orange-500"} />
+            <span className="timer-digits font-mono font-bold">
               {timeRemaining < 10 ? `0${timeRemaining}` : timeRemaining}s
             </span>
-            <div className="timer-linear-track">
+            <div className="timer-linear-track w-10 sm:w-14 h-1.5 bg-[#272a38] rounded-full overflow-hidden">
               <div
-                className="timer-linear-fill"
+                className={`timer-linear-fill h-full rounded-full transition-all duration-1000 ${
+                  timeRemaining <= 10 && !hasAnswered ? "bg-red-500" : "bg-gradient-to-r from-orange-500 to-orange-400"
+                }`}
                 style={{
                   width: `${(timeRemaining / 60) * 100}%`,
                 }}
@@ -98,70 +108,74 @@ export const QuestionCard = ({
       </div>
 
       {/* Progress Bar */}
-      <div className="question-progress-bar">
+      <div className="question-progress-bar w-full h-1.5 bg-[#14151e] rounded-full overflow-hidden border border-white/5">
         <div
-          className="progress-fill"
+          className="progress-fill h-full bg-gradient-to-r from-orange-600 to-orange-400 rounded-full transition-all duration-300"
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
 
-      {/* Question Card Box */}
-      <div className="question-main-card">
+      {/* Main Question Card */}
+      <div className="question-main-card rounded-2xl border border-white/10 bg-[#14151e]/85 backdrop-blur-md p-4 sm:p-7 shadow-2xl flex flex-col gap-4 sm:gap-6">
         {/* Timeout Banner if time ran out */}
         {isTimedOut && !hasAnswered && (
-          <div className="timeout-alert-banner">
-            <AlertTriangle size={18} />
+          <div className="timeout-alert-banner bg-amber-500/15 border border-amber-500/40 text-amber-300 p-3 rounded-xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold animate-shake">
+            <AlertTriangle size={17} className="shrink-0" />
             <span>Time expired! Score decremented by 1 point.</span>
           </div>
         )}
 
         {/* Question Statement */}
-        <h2 className="question-text">{question.question}</h2>
+        <h2 className="question-text text-base sm:text-xl lg:text-2xl font-bold text-white leading-snug">
+          {question.question}
+        </h2>
 
-        {/* Optional Code Snippet Block */}
+        {/* Code Snippet Block */}
         {question.codeSnippet && (
-          <div className="code-block-container">
-            <div className="code-header">
-              <div className="code-header-left">
-                <span className="code-dot red" />
-                <span className="code-dot yellow" />
-                <span className="code-dot green" />
-                <span className="code-lang">
-                  <Code2 size={13} /> Code Snippet
+          <div className="code-block-container rounded-xl overflow-hidden border border-[#232532] bg-[#090a0e]">
+            <div className="code-header bg-[#12141c] px-3 py-1.5 flex items-center justify-between border-b border-[#232532]">
+              <div className="code-header-left flex items-center gap-1.5">
+                <span className="code-dot red w-2 h-2 rounded-full bg-red-500" />
+                <span className="code-dot yellow w-2 h-2 rounded-full bg-amber-500" />
+                <span className="code-dot green w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="code-lang ml-1.5 text-[11px] text-slate-400 flex items-center gap-1 font-mono">
+                  <Code2 size={12} /> Code Snippet
                 </span>
               </div>
               <button
                 type="button"
-                className="code-copy-btn"
+                className="code-copy-btn text-[11px] text-slate-400 hover:text-white flex items-center gap-1 px-1.5 py-0.5 rounded hover:bg-white/10 transition-colors cursor-pointer"
                 onClick={handleCopyCode}
                 title="Copy code"
               >
-                {copied ? <Check size={13} /> : <Copy size={13} />}
+                {copied ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
                 <span>{copied ? "Copied" : "Copy"}</span>
               </button>
             </div>
-            <pre className="code-content">
+            <pre className="code-content p-3 sm:p-4 text-xs sm:text-sm font-mono text-orange-200 overflow-x-auto leading-relaxed">
               <code>{question.codeSnippet}</code>
             </pre>
           </div>
         )}
 
         {/* Answer Options Buttons */}
-        <div className="options-grid">
+        <div className="options-grid flex flex-col gap-2.5 sm:gap-3">
           {question.options.map((option, idx) => {
             const isSelected = selectedAnswerIndex === idx;
             const isCorrect = idx === question.correctIndex;
             const showFeedback = hasAnswered || isTimedOut;
 
-            let buttonClass = "option-btn";
+            let buttonClass = "option-btn w-full p-3 sm:p-4 rounded-xl border text-left flex items-center gap-3 transition-all cursor-pointer min-h-[50px] relative ";
             if (showFeedback) {
               if (isCorrect) {
-                buttonClass += " option-correct";
+                buttonClass += "bg-emerald-500/15 border-emerald-500 text-white shadow-lg shadow-emerald-500/20";
               } else if (isSelected && !isCorrect) {
-                buttonClass += " option-incorrect";
+                buttonClass += "bg-red-500/15 border-red-500 text-white shadow-lg shadow-red-500/20";
               } else {
-                buttonClass += " option-muted";
+                buttonClass += "bg-[#14151e]/50 border-white/5 opacity-40 cursor-default text-slate-400";
               }
+            } else {
+              buttonClass += "bg-[#191b26] border-white/10 hover:border-orange-500/50 hover:bg-[#202230] text-slate-200 hover:text-white";
             }
 
             return (
@@ -173,23 +187,34 @@ export const QuestionCard = ({
                 disabled={showFeedback}
                 aria-pressed={isSelected}
               >
-                <div className="option-letter-badge">
+                <div
+                  className={`option-letter-badge w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 border transition-all ${
+                    showFeedback && isCorrect
+                      ? "bg-emerald-500 border-emerald-400 text-white"
+                      : showFeedback && isSelected && !isCorrect
+                      ? "bg-red-500 border-red-400 text-white"
+                      : "bg-[#14151e] border-white/10 text-slate-400"
+                  }`}
+                >
                   {optionLetters[idx]}
                 </div>
 
-                <div className="option-text">{option}</div>
+                <div className="option-text flex-1 text-xs sm:text-base font-medium leading-snug">
+                  {option}
+                </div>
 
                 {/* Instant Feedback Badges */}
                 {showFeedback && (
-                  <div className="feedback-status-badge">
+                  <div className="feedback-status-badge shrink-0">
                     {isCorrect ? (
-                      <span className="status-label status-correct">
-                        <CheckCircle size={16} />
-                        {isSelected ? "Correct!" : "Correct Answer"}
+                      <span className="status-label status-correct inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                        <CheckCircle size={13} />
+                        <span className="hidden xs:inline">{isSelected ? "Correct!" : "Correct Answer"}</span>
                       </span>
                     ) : isSelected ? (
-                      <span className="status-label status-incorrect">
-                        <XCircle size={16} /> Incorrect
+                      <span className="status-label status-incorrect inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/40">
+                        <XCircle size={13} />
+                        <span className="hidden xs:inline">Incorrect</span>
                       </span>
                     ) : null}
                   </div>
@@ -199,32 +224,34 @@ export const QuestionCard = ({
           })}
         </div>
 
-        {/* Explanation Card (Appears after answer / timeout) */}
+        {/* Explanation Card */}
         {(hasAnswered || isTimedOut) && (
-          <div className="explanation-drawer animate-fade-in">
-            <div className="explanation-header">
-              <Lightbulb size={18} className="text-orange" />
+          <div className="explanation-drawer rounded-xl border border-orange-500/30 bg-gradient-to-br from-[#1e1812]/70 to-[#14161f]/80 p-3.5 sm:p-5 flex flex-col gap-1.5 animate-fade-in shadow-lg">
+            <div className="explanation-header flex items-center gap-2 text-xs sm:text-sm font-bold text-orange-400">
+              <Lightbulb size={16} className="text-orange-500 shrink-0" />
               <span>Explanation & Key Concept</span>
             </div>
-            <p className="explanation-text">{question.explanation}</p>
+            <p className="explanation-text text-xs sm:text-sm text-slate-300 leading-relaxed">
+              {question.explanation}
+            </p>
           </div>
         )}
 
-        {/* Bottom Actions Row */}
+        {/* Bottom Actions Row (Stacked on mobile, row on tablet/desktop) */}
         {(hasAnswered || isTimedOut) && (
-          <div className="card-actions-row animate-fade-in">
-            <div className="shortcut-hint">
-              Press <kbd>Enter</kbd> or <kbd>Space</kbd> to continue
+          <div className="card-actions-row flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2 animate-fade-in">
+            <div className="shortcut-hint text-center sm:text-left text-xs text-slate-500">
+              Press <kbd className="px-1.5 py-0.5 rounded bg-[#191b26] border border-white/10 text-slate-300 font-mono text-[11px]">Enter</kbd> or <kbd className="px-1.5 py-0.5 rounded bg-[#191b26] border border-white/10 text-slate-300 font-mono text-[11px]">Space</kbd> to continue
             </div>
 
             <button
               type="button"
-              className="btn-next-question"
+              className="btn-next-question w-full sm:w-auto py-3 px-6 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-orange-500/30 flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[46px]"
               onClick={onNext}
               autoFocus
             >
               <span>{isLastQuestion ? "View Final Results" : "Next Question"}</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={17} />
             </button>
           </div>
         )}

@@ -245,7 +245,7 @@ export function App() {
       />
 
       {/* Main View Container */}
-      <main className="main-content-layout">
+      <main className="main-content-layout w-full max-w-5xl mx-auto px-3 sm:px-6 py-4 sm:py-8 flex-1 flex flex-col justify-center">
         {currentView === "start" && (
           <StartScreen
             category={category}

@@ -1704,13 +1704,13 @@ input:checked + .slider:before {
 }
 
 /* =========================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS
    ========================================================= */
 @media (max-width: 860px) {
   .hero-branding-card {
     flex-direction: column;
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
   }
 
   .hero-tags-row {
@@ -1735,9 +1735,13 @@ input:checked + .slider:before {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .quiz-navbar {
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .navbar-container {
+    gap: 0.5rem;
   }
 
   .navbar-tagline {
@@ -1745,18 +1749,69 @@ input:checked + .slider:before {
   }
 
   .hero-title {
-    font-size: 2.1rem;
+    font-size: 1.85rem !important;
+  }
+
+  .stepper-track {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .stepper-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step-item {
+    flex-shrink: 0;
+  }
+
+  .step-line {
+    min-width: 14px;
+    flex-shrink: 0;
   }
 
   .question-main-card {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem !important;
   }
 
   .question-text {
-    font-size: 1.15rem;
+    font-size: 1.15rem !important;
+  }
+
+  .option-btn {
+    padding: 0.85rem 1rem !important;
+    min-height: 48px;
+  }
+
+  .option-letter-badge {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .card-actions-row {
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+  }
+
+  .btn-next-question {
+    width: 100% !important;
+    justify-content: center !important;
   }
 
   .results-actions-bar {
-    flex-direction: column;
+    grid-template-columns: 1fr !important;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .code-content {
+    font-size: 0.78rem !important;
+    padding: 0.85rem !important;
   }
 }

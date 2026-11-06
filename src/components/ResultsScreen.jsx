@@ -97,86 +97,92 @@ export const ResultsScreen = ({
   };
 
   return (
-    <div className="results-container animate-fade-in">
+    <div className="results-container max-w-4xl mx-auto flex flex-col gap-4 sm:gap-6 animate-fade-in w-full">
       {/* Top Banner Card */}
-      <div className="results-hero-card">
-        <div className="results-logo-badge">
-          <QuizLogo className="w-16 h-16" />
+      <div className="results-hero-card rounded-2xl sm:rounded-3xl border border-white/10 bg-gradient-to-br from-[#1c1e2a]/90 to-[#12131c]/95 p-5 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-8 shadow-2xl text-center sm:text-left relative overflow-hidden">
+        <div className="results-logo-badge w-16 h-16 sm:w-20 sm:h-20 shrink-0 drop-shadow-[0_0_16px_rgba(249,115,22,0.5)]">
+          <QuizLogo className="w-full h-full" />
         </div>
 
-        <div className="results-hero-info">
-          <div className="rank-tag">
+        <div className="results-hero-info flex-1 flex flex-col items-center sm:items-start gap-1.5 sm:gap-2">
+          <div className="rank-tag inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-orange-500/15 border border-orange-500/30 text-orange-400">
             <span>{rank.badge}</span>
             <span>{rank.title}</span>
           </div>
-          <h1 className="results-title">Quiz Completed!</h1>
-          <p className="results-subtitle">
+          <h1 className="results-title text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+            Quiz Completed!
+          </h1>
+          <p className="results-subtitle text-xs sm:text-sm text-slate-300">
             Here is your final score breakdown and comprehensive review.
           </p>
         </div>
 
         {/* Big Score Display */}
-        <div className="results-score-dial">
-          <div className="score-number-display">
-            <span className="score-value">{score}</span>
-            <span className="score-units">PTS</span>
+        <div className="results-score-dial shrink-0 flex flex-col items-center sm:items-end">
+          <div className="score-number-display flex items-baseline gap-1">
+            <span className="score-value text-4xl sm:text-5xl font-black text-orange-500 tracking-tight drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]">
+              {score}
+            </span>
+            <span className="score-units text-sm font-extrabold text-orange-300">
+              PTS
+            </span>
           </div>
-          <div className="score-accuracy-sub">
+          <div className="score-accuracy-sub text-xs sm:text-sm font-bold text-slate-300">
             {accuracy}% Accuracy
           </div>
         </div>
       </div>
 
-      {/* Metrics Row */}
-      <div className="metrics-grid">
-        <div className="metric-card metric-correct">
-          <CheckCircle2 size={20} className="text-emerald" />
-          <div className="metric-info">
-            <span className="metric-num">{correctCount}</span>
-            <span className="metric-label">Correct</span>
+      {/* Metrics Row (2 cols mobile, 5 cols desktop) */}
+      <div className="metrics-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
+        <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
+          <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+          <div className="metric-info flex flex-col">
+            <span className="metric-num text-base sm:text-xl font-extrabold text-white">{correctCount}</span>
+            <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Correct</span>
           </div>
         </div>
 
-        <div className="metric-card metric-wrong">
-          <XCircle size={20} className="text-red" />
-          <div className="metric-info">
-            <span className="metric-num">{incorrectCount}</span>
-            <span className="metric-label">Incorrect</span>
+        <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
+          <XCircle size={20} className="text-red-400 shrink-0" />
+          <div className="metric-info flex flex-col">
+            <span className="metric-num text-base sm:text-xl font-extrabold text-white">{incorrectCount}</span>
+            <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Incorrect</span>
           </div>
         </div>
 
         {timedOutCount > 0 && (
-          <div className="metric-card metric-timeout">
-            <AlertTriangle size={20} className="text-amber" />
-            <div className="metric-info">
-              <span className="metric-num">{timedOutCount}</span>
-              <span className="metric-label">Timed Out</span>
+          <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
+            <AlertTriangle size={20} className="text-amber-400 shrink-0" />
+            <div className="metric-info flex flex-col">
+              <span className="metric-num text-base sm:text-xl font-extrabold text-white">{timedOutCount}</span>
+              <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Timed Out</span>
             </div>
           </div>
         )}
 
-        <div className="metric-card metric-streak">
-          <Flame size={20} className="text-orange" />
-          <div className="metric-info">
-            <span className="metric-num">{bestStreak}</span>
-            <span className="metric-label">Best Streak</span>
+        <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3">
+          <Flame size={20} className="text-orange-500 shrink-0" />
+          <div className="metric-info flex flex-col">
+            <span className="metric-num text-base sm:text-xl font-extrabold text-white">{bestStreak}</span>
+            <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Streak</span>
           </div>
         </div>
 
-        <div className="metric-card metric-time">
-          <Award size={20} className="text-orange" />
-          <div className="metric-info">
-            <span className="metric-num">{formatTime(totalTimeSeconds)}</span>
-            <span className="metric-label">Time Taken</span>
+        <div className="metric-card rounded-xl border border-white/10 bg-[#0f1016] p-3 sm:p-4 flex items-center gap-3 col-span-2 sm:col-span-1">
+          <Award size={20} className="text-orange-400 shrink-0" />
+          <div className="metric-info flex flex-col">
+            <span className="metric-num text-base sm:text-xl font-extrabold text-white">{formatTime(totalTimeSeconds)}</span>
+            <span className="metric-label text-[10px] sm:text-xs font-semibold text-slate-400 uppercase">Time</span>
           </div>
         </div>
       </div>
 
       {/* Action Buttons Row */}
-      <div className="results-actions-bar">
+      <div className="results-actions-bar grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
         <button
           type="button"
-          className="btn-action-primary"
+          className="btn-action-primary py-3.5 px-5 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-orange-500/30 transition-all cursor-pointer min-h-[46px]"
           onClick={onRestart}
         >
           <RotateCcw size={17} />
@@ -185,48 +191,60 @@ export const ResultsScreen = ({
 
         <button
           type="button"
-          className="btn-action-secondary"
+          className="btn-action-secondary py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[46px]"
           onClick={onResetSettings}
         >
           <Sliders size={17} />
-          <span>Change Settings</span>
+          <span>Settings</span>
         </button>
 
         <button
           type="button"
-          className="btn-action-share"
+          className="btn-action-share py-3.5 px-5 rounded-xl bg-[#14151e] border border-white/10 hover:border-orange-500/40 text-slate-200 hover:text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[46px]"
           onClick={handleShare}
         >
-          {copied ? <Check size={17} /> : <Share2 size={17} />}
+          {copied ? <Check size={17} className="text-emerald-400" /> : <Share2 size={17} />}
           <span>{copied ? "Copied Score!" : "Share Results"}</span>
         </button>
       </div>
 
       {/* Detailed Review Section */}
-      <div className="results-review-card">
-        <div className="review-header-bar">
-          <h2 className="review-section-title">
-            All Questions Review ({results.length})
+      <div className="results-review-card rounded-2xl border border-white/10 bg-[#14151e]/85 backdrop-blur-md p-4 sm:p-7 flex flex-col gap-4 shadow-xl">
+        <div className="review-header-bar flex flex-wrap items-center justify-between gap-3">
+          <h2 className="review-section-title text-base sm:text-lg font-bold text-white">
+            Question Review ({results.length})
           </h2>
 
-          <div className="filter-pills">
+          <div className="filter-pills flex flex-wrap gap-1.5">
             <button
               type="button"
-              className={`filter-btn ${filter === "all" ? "active" : ""}`}
+              className={`filter-btn px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold border transition-all cursor-pointer ${
+                filter === "all"
+                  ? "bg-orange-500/20 border-orange-500 text-white"
+                  : "bg-[#191b26] border-white/10 text-slate-400 hover:text-white"
+              }`}
               onClick={() => setFilter("all")}
             >
               All ({results.length})
             </button>
             <button
               type="button"
-              className={`filter-btn ${filter === "correct" ? "active" : ""}`}
+              className={`filter-btn px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold border transition-all cursor-pointer ${
+                filter === "correct"
+                  ? "bg-emerald-500/20 border-emerald-500 text-white"
+                  : "bg-[#191b26] border-white/10 text-slate-400 hover:text-white"
+              }`}
               onClick={() => setFilter("correct")}
             >
               Correct ({correctCount})
             </button>
             <button
               type="button"
-              className={`filter-btn ${filter === "incorrect" ? "active" : ""}`}
+              className={`filter-btn px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold border transition-all cursor-pointer ${
+                filter === "incorrect"
+                  ? "bg-red-500/20 border-red-500 text-white"
+                  : "bg-[#191b26] border-white/10 text-slate-400 hover:text-white"
+              }`}
               onClick={() => setFilter("incorrect")}
             >
               Missed ({incorrectCount + timedOutCount})
@@ -234,7 +252,7 @@ export const ResultsScreen = ({
           </div>
         </div>
 
-        <div className="review-list">
+        <div className="review-list flex flex-col gap-2.5 sm:gap-3">
           {filteredResults.map((item, idx) => {
             const isExpanded =
               expandedId === item.question.id || filter !== "all";
@@ -242,66 +260,70 @@ export const ResultsScreen = ({
             return (
               <div
                 key={item.question.id}
-                className={`review-item ${
+                className={`review-item rounded-xl border overflow-hidden transition-all ${
                   item.isCorrect
-                    ? "status-ok"
+                    ? "bg-[#0f1016] border-emerald-500/40 border-l-4 border-l-emerald-500"
                     : item.isTimedOut
-                    ? "status-timeout"
-                    : "status-err"
+                    ? "bg-[#0f1016] border-amber-500/40 border-l-4 border-l-amber-500"
+                    : "bg-[#0f1016] border-red-500/40 border-l-4 border-l-red-500"
                 }`}
               >
                 <div
-                  className="review-item-header"
+                  className="review-item-header p-3 sm:p-4 flex items-start gap-3 cursor-pointer hover:bg-white/[0.02]"
                   onClick={() =>
                     setExpandedId(
                       expandedId === item.question.id ? null : item.question.id
                     )
                   }
                 >
-                  <div className="review-status-col">
+                  <div className="review-status-col mt-0.5 shrink-0">
                     {item.isCorrect ? (
-                      <CheckCircle2 size={20} className="icon-correct" />
+                      <CheckCircle2 size={18} className="text-emerald-400" />
                     ) : item.isTimedOut ? (
-                      <AlertTriangle size={20} className="icon-timeout" />
+                      <AlertTriangle size={18} className="text-amber-400" />
                     ) : (
-                      <XCircle size={20} className="icon-incorrect" />
+                      <XCircle size={18} className="text-red-400" />
                     )}
                   </div>
 
-                  <div className="review-title-col">
-                    <div className="review-meta-line">
-                      <span className="q-badge">Q{idx + 1}</span>
-                      <span className="cat-badge">{item.question.category}</span>
-                      <span className="diff-badge">
+                  <div className="review-title-col flex-1 flex flex-col gap-1">
+                    <div className="review-meta-line flex flex-wrap items-center gap-1.5">
+                      <span className="q-badge text-xs font-bold text-slate-500">Q{idx + 1}</span>
+                      <span className="cat-badge text-[10px] font-bold px-1.5 py-0.5 rounded bg-orange-500/15 text-orange-400">
+                        {item.question.category}
+                      </span>
+                      <span className="diff-badge text-[10px] text-slate-500">
                         {item.question.difficulty}
                       </span>
                       {item.isTimedOut && (
-                        <span className="timeout-badge">Timed Out (-1 pt)</span>
+                        <span className="timeout-badge text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">
+                          Timed Out (-1 pt)
+                        </span>
                       )}
                     </div>
-                    <p className="review-question-text">
+                    <p className="review-question-text text-xs sm:text-sm font-semibold text-slate-200">
                       {item.question.question}
                     </p>
                   </div>
 
-                  <div className="review-toggle-col">
-                    {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                  <div className="review-toggle-col text-slate-500 shrink-0">
+                    {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="review-details animate-fade-in">
-                    {/* User's response vs Correct answer */}
-                    <div className="answers-comparison-box">
-                      <div className="answer-row">
-                        <span className="answer-label">Your Answer:</span>
+                  <div className="review-details bg-[#0a0b0e] border-t border-white/5 p-3.5 sm:p-4 flex flex-col gap-3 animate-fade-in text-xs sm:text-sm">
+                    {/* Answers comparison */}
+                    <div className="answers-comparison-box flex flex-col gap-1.5">
+                      <div className="answer-row flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                        <span className="answer-label text-slate-400 font-semibold sm:w-28 shrink-0">Your Answer:</span>
                         <span
-                          className={`answer-value ${
+                          className={`answer-value font-medium ${
                             item.isCorrect
-                              ? "text-emerald"
+                              ? "text-emerald-400"
                               : item.isTimedOut
-                              ? "text-amber"
-                              : "text-red"
+                              ? "text-amber-400"
+                              : "text-red-400"
                           }`}
                         >
                           {item.isTimedOut
@@ -311,9 +333,9 @@ export const ResultsScreen = ({
                       </div>
 
                       {!item.isCorrect && (
-                        <div className="answer-row">
-                          <span className="answer-label">Correct Answer:</span>
-                          <span className="answer-value text-emerald font-semibold">
+                        <div className="answer-row flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                          <span className="answer-label text-slate-400 font-semibold sm:w-28 shrink-0">Correct Answer:</span>
+                          <span className="answer-value text-emerald-400 font-bold">
                             {item.question.options[item.question.correctIndex]}
                           </span>
                         </div>
@@ -321,8 +343,8 @@ export const ResultsScreen = ({
                     </div>
 
                     {/* Explanation */}
-                    <div className="review-explanation">
-                      <strong>Concept Explanation:</strong>
+                    <div className="review-explanation rounded-lg bg-[#14151e] border border-white/5 p-3 text-slate-300 leading-relaxed">
+                      <strong className="block text-orange-400 font-bold mb-1">Concept Explanation:</strong>
                       <p>{item.question.explanation}</p>
                     </div>
                   </div>
